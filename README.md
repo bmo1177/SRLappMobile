@@ -178,46 +178,102 @@ data class Permission(
 
 ---
 
-## 📸 Visual Showcase
+## 📸 Visual Showcase (Complete Gallery)
+
+Explore the full feature set of the application through our categorized visual guide.
 
 <details open>
-<summary><b>🧠 Core Learning Experience</b></summary>
+<summary><b>🧠 Core Learning & Mastery</b></summary>
+Focused on the active recall and spaced repetition experience.
 
-| Flashcard Interface | SM-2 Review Session | Vocabulary Deck |
-|:-------------------:|:-------------------:|:---------------:|
-| ![Flashcard](./screenshots/Screenshot_20251230_123823.png) | ![Review](./screenshots/Screenshot_20251230_123836.png) | ![Deck](./screenshots/Screenshot_20251230_125329.png) |
-| Swipe-based interaction with audio | Quality rating (Again/Hard/Good/Easy) | Categorized word collections |
-
+````carousel
+![Flashcard Interface](./screenshots/Screenshot_20251230_123823.png)
+<!-- slide -->
+![SM-2 Review Session](./screenshots/Screenshot_20251230_123836.png)
+<!-- slide -->
+![Standard Exercise](./screenshots/Screenshot_20251230_123847.png)
+<!-- slide -->
+![Vocabulary Deck](./screenshots/Screenshot_20251230_125329.png)
+<!-- slide -->
+![Speed Challenge Mode](./screenshots/Screenshot_20251231_020417.png)
+````
 </details>
 
 <details>
-<summary><b>🤖 AI-Powered Features</b></summary>
+<summary><b>🤖 Engagement & AI Personalization</b></summary>
+Gamified elements and AI-driven motivators.
 
-| Gamified Streaks | Personalized Onboarding | Smart Notifications |
-|:----------------:|:-----------------------:|:-------------------:|
-| ![Streak](./screenshots/Screenshot_20251230_042828.png) | ![Onboarding](./screenshots/Screenshot_20251230_042919.png) | ![Notifications](./screenshots/Screenshot_20251230_125010.png) |
-| Daily commitment tracking | AI learns user preferences | Bandit algorithm optimization |
-
+````carousel
+![Main Dashboard](./screenshots/Screenshot_20251231_020325.png)
+<!-- slide -->
+![Achievement Unlocked](./screenshots/Screenshot_20251230_042828.png)
+<!-- slide -->
+![Daily Streak Tracking](./screenshots/Screenshot_20251230_042958.png)
+<!-- slide -->
+![Social Leaderboard](./screenshots/Screenshot_20251230_043011.png)
+<!-- slide -->
+![Engagement Rewards](./screenshots/Screenshot_20251230_042828.png)
+````
 </details>
 
 <details>
-<summary><b>🗺️ Structured Learning Paths</b></summary>
+<summary><b>🗺️ Learning Journey (Roadmap)</b></summary>
+Visual progression through week-based modules.
 
-| Learning Journey | Session Selector | Exam Module Browser |
-|:----------------:|:----------------:|:-------------------:|
-| ![Journey](./screenshots/Screenshot_20251231_020332.png) | ![Session](./screenshots/Screenshot_20251231_020401.png) | ![Modules](./screenshots/Screenshot_20251231_020410.png) |
-| CEFR-aligned progression | Topic-based practice | IELTS/TOEFL focus areas |
-
+````carousel
+![Learning Roadmap](./screenshots/Screenshot_20251231_020332.png)
+<!-- slide -->
+![Active Weekly Focus](./screenshots/Screenshot_20251231_020349.png)
+<!-- slide -->
+![Detailed Session View](./screenshots/Screenshot_20251231_020401.png)
+<!-- slide -->
+![Exam Prep Modules](./screenshots/Screenshot_20251231_020410.png)
+````
 </details>
 
 <details>
-<summary><b>📊 Analytics & Progress Tracking</b></summary>
+<summary><b>📊 Advanced Analytics & Retention</b></summary>
+Tracking the science behind your progress.
 
-| Performance Dashboard | Retention Charts | Heatmap Calendar |
-|:---------------------:|:----------------:|:----------------:|
-| ![Analytics](./screenshots/Screenshot_20251230_123758.png) | ![Progress](./screenshots/Screenshot_20251230_123811.png) | ![Heatmap](./screenshots/Screenshot_20251230_123959.png) |
-| Multi-metric overview | Forgetting curve visualization | GitHub-style activity grid |
+````carousel
+![Health & Metrics Dashboard](./screenshots/Screenshot_20251230_123758.png)
+<!-- slide -->
+![Progress Over Time](./screenshots/Screenshot_20251230_123811.png)
+<!-- slide -->
+![Activity Heatmap](./screenshots/Screenshot_20251230_123959.png)
+````
+</details>
 
+<details>
+<summary><b>🔐 Authentication & Onboarding</b></summary>
+Seamless entry into your personalized learning journey.
+
+````carousel
+![Welcome Screen](./screenshots/Screenshot_20251230_042900.png)
+<!-- slide -->
+![Secure Sign In](./screenshots/Screenshot_20251230_042848.png)
+<!-- slide -->
+![Step 1: Goal Setting](./screenshots/Screenshot_20251230_042919.png)
+<!-- slide -->
+![Step 2: Level Selection](./screenshots/Screenshot_20251230_042931.png)
+````
+</details>
+
+<details>
+<summary><b>⚙️ Profile & Customization</b></summary>
+Tailoring the app to your preferences.
+
+````carousel
+![User Profile](./screenshots/Screenshot_20251230_124905.png)
+<!-- slide -->
+![General Settings](./screenshots/Screenshot_20251230_125010.png)
+<!-- slide -->
+![App Theming](./screenshots/Screenshot_20251230_124901.png)
+<!-- slide -->
+![Data Management](./screenshots/Screenshot_20251228_211612.png)
+<!-- slide -->
+![About & Version Info](./screenshots/Screenshot_20251228_211633.png)
+````
 </details>
 
 ---
