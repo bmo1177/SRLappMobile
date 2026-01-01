@@ -474,17 +474,7 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - **SM-2 Algorithm**: Based on research by Piotr Wozniak
 - **UI Design Inspiration**: Duolingo, Anki, Memrise
 - **Icon Pack**: Material Design Icons
-- **Illustrations**: Custom illustrations by [Artist Name]
-- **Beta Testers**: Thank you to our 100+ beta users for invaluable feedback
-
----
-
-## 📞 Contact & Support
-
-- **Email**: support@languagelearningapp.com
-- **Discord**: [Join our community](https://discord.gg/yourinvite)
-- **Twitter**: [@YourAppHandle](https://twitter.com/yourhandle)
-- **Website**: [www.languagelearningapp.com](https://www.languagelearningapp.com)
+- **Illustrations**: Custom illustrations by Gemini AI
 
 ---
 
