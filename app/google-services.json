@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "210016281976",
+    "project_id": "androidappsrl-56a5a",
+    "storage_bucket": "androidappsrl-56a5a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210016281976:android:4c5080e98a966fd73e948d",
+        "android_client_info": {
+          "package_name": "com.example.srlappexperiment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArwTWslli0Fq-kxjgS6MyyySwKADO6Pow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

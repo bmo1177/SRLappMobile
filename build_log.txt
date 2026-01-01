@@ -1,0 +1,111 @@
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kaptGenerateStubsDebugKotlin UP-TO-DATE
+> Task :app:kaptDebugKotlin UP-TO-DATE
+
+> Task :app:compileDebugKotlin FAILED
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:11:40 Conflicting import: imported name 'Icons' is ambiguous.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:18:40 Conflicting import: imported name 'Icons' is ambiguous.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:151:42 Unresolved reference 'Color'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:185:26 Unresolved reference 'clip'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:217:22 Unresolved reference 'clip'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/components/dashboard/DashboardComponents.kt:244:22 Unresolved reference 'clip'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/admin/ContentCMSScreen.kt:125:9 None of the following candidates is applicable:
+fun Icon(bitmap: ImageBitmap, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(painter: Painter, tint: ColorProducer?, contentDescription: String?, modifier: Modifier = ...): Unit
+fun Icon(painter: Painter, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(imageVector: ImageVector, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/admin/UserManagementScreen.kt:21:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/admin/UserManagementScreen.kt:84:5 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/admin/UserManagementScreen.kt:90:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:21:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:81:17 No parameter with name 'containerColor' found.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:83:17 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:141:9 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:146:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/ai/AiPartnerScreen.kt:156:25 None of the following candidates is applicable:
+fun Icon(bitmap: ImageBitmap, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(painter: Painter, tint: ColorProducer?, contentDescription: String?, modifier: Modifier = ...): Unit
+fun Icon(painter: Painter, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(imageVector: ImageVector, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/billing/SubscriptionScreen.kt:27:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/billing/SubscriptionScreen.kt:145:5 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/billing/SubscriptionScreen.kt:155:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/billing/SubscriptionScreen.kt:181:13 None of the following candidates is applicable:
+fun Icon(bitmap: ImageBitmap, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(painter: Painter, tint: ColorProducer?, contentDescription: String?, modifier: Modifier = ...): Unit
+fun Icon(painter: Painter, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(imageVector: ImageVector, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:23:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:60:17 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:64:21 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:114:9 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:120:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/curriculum/CurriculumScreen.kt:177:43 Unresolved reference 'BorderStroke'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:20:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:41:18 Unresolved reference 'clickable'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:49:9 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:50:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:87:21 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/lesson/components/LessonStepComponents.kt:91:25 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/main/MainScreen.kt:51:36 Unresolved reference 'dp'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/main/MainScreen.kt:119:21 No value passed for parameter 'onNavigateToAdmin'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/main/MainScreen.kt:119:21 No value passed for parameter 'onNavigateToSupport'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/main/MainScreen.kt:119:21 No value passed for parameter 'onNavigateToSubscription'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/placement/PlacementTestScreen.kt:18:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/placement/PlacementTestScreen.kt:86:25 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/placement/PlacementTestScreen.kt:89:34 Unresolved reference 'clickable'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/placement/PlacementTestScreen.kt:97:29 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/placement/PlacementTestScreen.kt:100:55 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:22:74 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:40:9 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:44:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:91:9 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:97:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:109:5 Unresolved reference 'ModernCard'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/practice/PracticeHubScreen.kt:113:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:196:39 Unresolved reference 'isPremium'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:236:39 Unresolved reference 'targetLanguage'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:363:57 Unresolved reference 'targetLanguage'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:364:68 No parameter with name 'targetLanguage' found.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:367:57 Unresolved reference 'targetLanguage'.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/settings/SettingsScreen.kt:368:68 No parameter with name 'targetLanguage' found.
+e: file:///home/dev-lab/AndroidStudioProjects/SRLAppExperiment/app/src/main/java/com/example/srlappexperiment/presentation/ui/screens/social/LeaderboardScreen.kt:107:13 None of the following candidates is applicable:
+fun Icon(bitmap: ImageBitmap, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(painter: Painter, tint: ColorProducer?, contentDescription: String?, modifier: Modifier = ...): Unit
+fun Icon(painter: Painter, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+fun Icon(imageVector: ImageVector, contentDescription: String?, modifier: Modifier = ..., tint: Color = ...): Unit
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 6s
+20 actionable tasks: 1 executed, 19 up-to-date

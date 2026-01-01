@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_purple">#6C5CE7</color>
+    <color name="primary_blue">#0984E3</color>
+    <color name="primary_teal">#00B894</color>
+    <color name="accent_coral">#FF7675</color>
+    <color name="accent_pink">#FD79A8</color>
+    <color name="success_green">#00B894</color>
+    <color name="error_red">#FF7675</color>
+    <color name="background_light">#F8F9FA</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="text_primary">#2D3436</color>
+    <color name="text_secondary">#636E72</color>
+</resources>
