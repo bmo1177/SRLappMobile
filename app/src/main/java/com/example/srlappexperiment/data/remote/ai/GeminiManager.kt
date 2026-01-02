@@ -1,6 +1,7 @@
 package com.example.srlappexperiment.data.remote.ai
 
 import com.google.ai.client.generativeai.GenerativeModel
+import com.example.srlappexperiment.BuildConfig
 import com.google.ai.client.generativeai.type.GenerateContentResponse
 import com.google.ai.client.generativeai.type.generationConfig
 import kotlinx.coroutines.Dispatchers
@@ -150,9 +151,7 @@ class GeminiManager @Inject constructor() {
      * In production, this should be fetched securely
      */
     private fun getApiKey(): String {
-        // For now, return a placeholder. In production, this would be:
-        // BuildConfig.GEMINI_API_KEY or loaded from local.properties
-        return System.getenv("GEMINI_API_KEY") ?: "YOUR_API_KEY_HERE"
+        return BuildConfig.GEMINI_API_KEY
     }
 
     /**
