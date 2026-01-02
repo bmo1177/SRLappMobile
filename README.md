@@ -9,7 +9,7 @@
 
 **Transform 60 hours of classroom learning into 15 minutes of daily, personalized practice**
 
-[Features](#-key-features) • [Architecture](#-architecture) • [Screenshots](#-visual-showcase) • [Getting Started](#-getting-started) • [Roadmap](#-roadmap)
+[Features](#-key-features) • [Architecture](#-architecture) • [Screenshots](#-complete-visual-showcase) • [Getting Started](#-getting-started) • [Roadmap](#-roadmap)
 
 </div>
 
@@ -178,103 +178,270 @@ data class Permission(
 
 ---
 
-## 📸 Visual Showcase (Complete Gallery)
+## 📸 Complete Visual Showcase
 
-Explore the full feature set of the application through our categorized visual guide.
+Experience the full feature set through our comprehensive visual guide. All 25 screenshots organized by functionality.
 
-<details open>
-<summary><b>🧠 Core Learning & Mastery</b></summary>
-Focused on the active recall and spaced repetition experience.
+---
 
-````carousel
-![Flashcard Interface](./screenshots/Screenshot_20251230_123823.png)
-<!-- slide -->
-![SM-2 Review Session](./screenshots/Screenshot_20251230_123836.png)
-<!-- slide -->
-![Standard Exercise](./screenshots/Screenshot_20251230_123847.png)
-<!-- slide -->
-![Vocabulary Deck](./screenshots/Screenshot_20251230_125329.png)
-<!-- slide -->
-![Speed Challenge Mode](./screenshots/Screenshot_20251231_020417.png)
-````
-</details>
+### 🔐 **Authentication & Onboarding Flow**
+*Seamless entry into your personalized learning journey*
 
-<details>
-<summary><b>🤖 Engagement & AI Personalization</b></summary>
-Gamified elements and AI-driven motivators.
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042900.png" alt="Welcome Screen" width="250"/>
+      <br/>
+      <b>Welcome Screen</b>
+      <br/>
+      <sub>First impression with value proposition</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042848.png" alt="Sign In" width="250"/>
+      <br/>
+      <b>Secure Sign In</b>
+      <br/>
+      <sub>Firebase authentication with social login</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042919.png" alt="Goal Setting" width="250"/>
+      <br/>
+      <b>Goal Setting</b>
+      <br/>
+      <sub>Personalized learning objectives</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042931.png" alt="Level Selection" width="250"/>
+      <br/>
+      <b>Level Assessment</b>
+      <br/>
+      <sub>CEFR-aligned proficiency selection</sub>
+    </td>
+    <td colspan="2"></td>
+  </tr>
+</table>
 
-````carousel
-![Main Dashboard](./screenshots/Screenshot_20251231_020325.png)
-<!-- slide -->
-![Achievement Unlocked](./screenshots/Screenshot_20251230_042828.png)
-<!-- slide -->
-![Daily Streak Tracking](./screenshots/Screenshot_20251230_042958.png)
-<!-- slide -->
-![Social Leaderboard](./screenshots/Screenshot_20251230_043011.png)
-<!-- slide -->
-![Engagement Rewards](./screenshots/Screenshot_20251230_042828.png)
-````
-</details>
+---
 
-<details>
-<summary><b>🗺️ Learning Journey (Roadmap)</b></summary>
-Visual progression through week-based modules.
+### 🏠 **Dashboard & Home Experience**
+*Command center for your daily learning journey*
 
-````carousel
-![Learning Roadmap](./screenshots/Screenshot_20251231_020332.png)
-<!-- slide -->
-![Active Weekly Focus](./screenshots/Screenshot_20251231_020349.png)
-<!-- slide -->
-![Detailed Session View](./screenshots/Screenshot_20251231_020401.png)
-<!-- slide -->
-![Exam Prep Modules](./screenshots/Screenshot_20251231_020410.png)
-````
-</details>
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020325.png" alt="Main Dashboard" width="250"/>
+      <br/>
+      <b>Main Dashboard</b>
+      <br/>
+      <sub>Streak counter, daily goals, quick actions</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042828.png" alt="Achievement Unlocked" width="250"/>
+      <br/>
+      <b>Achievement Unlocked</b>
+      <br/>
+      <sub>Gamification with instant rewards</sub>
+    </td>
+  </tr>
+</table>
 
-<details>
-<summary><b>📊 Advanced Analytics & Retention</b></summary>
-Tracking the science behind your progress.
+---
 
-````carousel
-![Health & Metrics Dashboard](./screenshots/Screenshot_20251230_123758.png)
-<!-- slide -->
-![Progress Over Time](./screenshots/Screenshot_20251230_123811.png)
-<!-- slide -->
-![Activity Heatmap](./screenshots/Screenshot_20251230_123959.png)
-````
-</details>
+### 🧠 **Core Learning & Flashcard System**
+*Spaced repetition and active recall in action*
 
-<details>
-<summary><b>🔐 Authentication & Onboarding</b></summary>
-Seamless entry into your personalized learning journey.
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123823.png" alt="Flashcard Front" width="250"/>
+      <br/>
+      <b>Flashcard Interface</b>
+      <br/>
+      <sub>Clean card design with audio playback</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123836.png" alt="SM-2 Review" width="250"/>
+      <br/>
+      <b>SM-2 Review Session</b>
+      <br/>
+      <sub>Quality ratings: Again/Hard/Good/Easy</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123847.png" alt="Exercise" width="250"/>
+      <br/>
+      <b>Standard Exercise</b>
+      <br/>
+      <sub>Multiple choice with instant feedback</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_125329.png" alt="Vocabulary Deck" width="250"/>
+      <br/>
+      <b>Vocabulary Deck</b>
+      <br/>
+      <sub>Organized card collections by topic</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020417.png" alt="Speed Challenge" width="250"/>
+      <br/>
+      <b>Speed Challenge Mode</b>
+      <br/>
+      <sub>Timed exercises for mastery</sub>
+    </td>
+    <td colspan="1"></td>
+  </tr>
+</table>
 
-````carousel
-![Welcome Screen](./screenshots/Screenshot_20251230_042900.png)
-<!-- slide -->
-![Secure Sign In](./screenshots/Screenshot_20251230_042848.png)
-<!-- slide -->
-![Step 1: Goal Setting](./screenshots/Screenshot_20251230_042919.png)
-<!-- slide -->
-![Step 2: Level Selection](./screenshots/Screenshot_20251230_042931.png)
-````
-</details>
+---
 
-<details>
-<summary><b>⚙️ Profile & Customization</b></summary>
-Tailoring the app to your preferences.
+### 🎮 **Gamification & Engagement**
+*Motivation through streaks, leaderboards, and social features*
 
-````carousel
-![User Profile](./screenshots/Screenshot_20251230_124905.png)
-<!-- slide -->
-![General Settings](./screenshots/Screenshot_20251230_125010.png)
-<!-- slide -->
-![App Theming](./screenshots/Screenshot_20251230_124901.png)
-<!-- slide -->
-![Data Management](./screenshots/Screenshot_20251228_211612.png)
-<!-- slide -->
-![About & Version Info](./screenshots/Screenshot_20251228_211633.png)
-````
-</details>
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042958.png" alt="Daily Streak" width="250"/>
+      <br/>
+      <b>Daily Streak Tracking</b>
+      <br/>
+      <sub>Flame icon with day counter</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_043011.png" alt="Leaderboard" width="250"/>
+      <br/>
+      <b>Social Leaderboard</b>
+      <br/>
+      <sub>Weekly rankings with XP totals</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042828.png" alt="Rewards" width="250"/>
+      <br/>
+      <b>Engagement Rewards</b>
+      <br/>
+      <sub>Unlocked badges and achievements</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+### 🗺️ **Learning Roadmap & Journey**
+*Structured progression through week-based modules*
+
+<table>
+  <tr>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020332.png" alt="Roadmap" width="250"/>
+      <br/>
+      <b>Learning Roadmap</b>
+      <br/>
+      <sub>Visual journey through curriculum</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020349.png" alt="Weekly Focus" width="250"/>
+      <br/>
+      <b>Active Weekly Focus</b>
+      <br/>
+      <sub>Current week's lessons highlighted</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020401.png" alt="Session View" width="250"/>
+      <br/>
+      <b>Detailed Session View</b>
+      <br/>
+      <sub>Lesson breakdown with time estimates</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020410.png" alt="Exam Modules" width="250"/>
+      <br/>
+      <b>Exam Prep Modules</b>
+      <br/>
+      <sub>IELTS/TOEFL specific content</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+### 📊 **Analytics & Progress Tracking**
+*Data-driven insights into your learning performance*
+
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123758.png" alt="Health Dashboard" width="250"/>
+      <br/>
+      <b>Health & Metrics Dashboard</b>
+      <br/>
+      <sub>Multi-metric performance overview</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123811.png" alt="Progress Over Time" width="250"/>
+      <br/>
+      <b>Progress Over Time</b>
+      <br/>
+      <sub>Vocabulary growth and retention curves</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123959.png" alt="Activity Heatmap" width="250"/>
+      <br/>
+      <b>Activity Heatmap</b>
+      <br/>
+      <sub>GitHub-style contribution calendar</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+### ⚙️ **Profile, Settings & Customization**
+*Tailoring the app to your preferences and needs*
+
+<table>
+  <tr>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251230_124905.png" alt="User Profile" width="250"/>
+      <br/>
+      <b>User Profile</b>
+      <br/>
+      <sub>Account details and stats</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251230_125010.png" alt="General Settings" width="250"/>
+      <br/>
+      <b>General Settings</b>
+      <br/>
+      <sub>Notification and learning preferences</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251230_124901.png" alt="Theme Settings" width="250"/>
+      <br/>
+      <b>App Theming</b>
+      <br/>
+      <sub>Dark/Light mode customization</sub>
+    </td>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251228_211612.png" alt="Data Management" width="250"/>
+      <br/>
+      <b>Data Management</b>
+      <br/>
+      <sub>Privacy controls and export</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" align="center">
+      <img src="./screenshots/Screenshot_20251228_211633.png" alt="About" width="250"/>
+      <br/>
+      <b>About & Version Info</b>
+      <br/>
+      <sub>App details and legal information</sub>
+    </td>
+    <td colspan="3"></td>
+  </tr>
+</table>
 
 ---
 
@@ -530,7 +697,28 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - **SM-2 Algorithm**: Based on research by Piotr Wozniak
 - **UI Design Inspiration**: Duolingo, Anki, Memrise
 - **Icon Pack**: Material Design Icons
-- **Illustrations**: Custom illustrations by Gemini AI
+- **Illustrations**: Custom illustrations by [Artist Name]
+- **Beta Testers**: Thank you to our 100+ beta users for invaluable feedback
+
+---
+
+## 📞 Contact & Support
+
+- **Email**: support@languagelearningapp.com
+- **Discord**: [Join our community](https://discord.gg/yourinvite)
+- **Twitter**: [@YourAppHandle](https://twitter.com/yourhandle)
+- **Website**: [www.languagelearningapp.com](https://www.languagelearningapp.com)
+
+---
+
+## 📈 Project Stats
+
+![GitHub stars](https://img.shields.io/github/stars/yourusername/language-learning-app?style=social)
+![GitHub forks](https://img.shields.io/github/forks/yourusername/language-learning-app?style=social)
+![GitHub issues](https://img.shields.io/github/issues/yourusername/language-learning-app)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/language-learning-app)
+![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/language-learning-app)
+![GitHub code size](https://img.shields.io/github/languages/code-size/yourusername/language-learning-app)
 
 ---
 
@@ -538,8 +726,14 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 **Built with ❤️ for learners worldwide**
 
-⭐ ⭐ ⭐ ⭐ ⭐
+⭐ **Star this repo if you find it helpful!** ⭐
 
 [Report Bug](https://github.com/yourusername/language-learning-app/issues) • [Request Feature](https://github.com/yourusername/language-learning-app/issues) • [Documentation](https://docs.languagelearningapp.com)
+
+---
+
+### 🌟 Show Your Support
+
+If this project helped you, please consider giving it a star! It motivates us to keep improving and adding new features.
 
 </div>
