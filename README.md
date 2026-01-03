@@ -61,279 +61,29 @@ A production-ready Android application revolutionizing language learning through
 ---
 
 ## 📱 Visual Walkthrough
-
 ### 🎬 Onboarding Journey (5 Screens)
-
-<table>
-  <tr>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042900.png" width="180"/><br/>
-      <strong>Welcome</strong><br/>
-      <sub>Multi-language greeting with value proposition</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042938.png" width="180"/><br/>
-      <strong>Spaced Repetition</strong><br/>
-      <sub>AI remembers what you forget</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042947.png" width="180"/><br/>
-      <strong>AI Tutor</strong><br/>
-      <sub>Real conversations & pronunciation feedback</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042958.png" width="180"/><br/>
-      <strong>Gamification</strong><br/>
-      <sub>Streaks, achievements, rewards</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_043006.png" width="180"/><br/>
-      <strong>Offline Mode</strong><br/>
-      <sub>Learn anywhere without internet</sub>
-    </td>
-  </tr>
-</table>
-
----
-
-### 🔐 Authentication (3 Screens)
-
-<table>
-  <tr>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042848.png" width="200"/><br/>
-      <strong>Sign Up</strong><br/>
-      <sub>Full Name, Email, Password with validation</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_125132.png" width="200"/><br/>
-      <strong>Sign In</strong><br/>
-      <sub>Test accounts: user@test.com / admin@test.com</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_124858.png" width="200"/><br/>
-      <strong>Loading</strong><br/>
-      <sub>Gradient background with animated logo</sub>
-    </td>
-  </tr>
-</table>
-
----
+<table> <tr> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123758.png" width="180"/><br/> <strong>Welcome Screen</strong><br/> <sub>Multi-language greeting with app introduction</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123811.png" width="180"/><br/> <strong>Spaced Repetition</strong><br/> <sub>AI remembers what you forget</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123823.png" width="180"/><br/> <strong>AI Personalization</strong><br/> <sub>Your unique language path</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_042958.png" width="180"/><br/> <strong>Gamification</strong><br/> <sub>Progress tracking & rewards</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_043011.png" width="180"/><br/> <strong>Offline Learning</strong><br/> <sub>Learn anywhere without internet</sub> </td> </tr> </table>
 
 ### 🎯 Personalization Setup (2 Screens)
+<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042919.png" width="220"/><br/> <strong>Goal Setting</strong><br/> <sub>Choose your learning purpose</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042931.png" width="220"/><br/> <strong>Level Assessment</strong><br/> <sub>CEFR levels from Beginner to Advanced</sub> </td> </tr> </table>
 
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042919.png" width="220"/><br/>
-      <strong>Goal Setting</strong><br/>
-      <sub>Why are you learning? Travel, Career, Exams, Personal</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042931.png" width="220"/><br/>
-      <strong>Level Assessment</strong><br/>
-      <sub>CEFR levels: Beginner (A1) → Advanced (C2)</sub>
-    </td>
-  </tr>
-</table>
+### 🏠 Dashboard & Home (1 Screen)
+<table> <tr> <td align="center"> <img src="./screenshots/Screenshot_20251231_020325.png" width="250"/><br/> <strong>Main Dashboard</strong><br/> <sub>Progress overview and daily streak</sub> </td> </tr> </table>
 
----
-
-### 🏠 Dashboard & Home (2 Screens)
-
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020325.png" width="220"/><br/>
-      <strong>Main Dashboard</strong><br/>
-      <sub>0 Day Streak | 60% lesson complete | 9 words learned</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042828.png" width="220"/><br/>
-      <strong>Achievement Unlocked</strong><br/>
-      <sub>Modal popup with celebration animation</sub>
-    </td>
-  </tr>
-</table>
-
----
-
-### 📚 Learning Modes (5 Screens)
-
-<table>
-  <tr>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123823.png" width="170"/><br/>
-      <strong>Flashcard</strong><br/>
-      <sub>Clean card with audio</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123836.png" width="170"/><br/>
-      <strong>SM-2 Rating</strong><br/>
-      <sub>Again/Hard/Good/Easy</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123847.png" width="170"/><br/>
-      <strong>Multiple Choice</strong><br/>
-      <sub>AI-generated distractors</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251230_125329.png" width="170"/><br/>
-      <strong>Vocab Deck</strong><br/>
-      <sub>Topic-based collections</sub>
-    </td>
-    <td width="20%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020417.png" width="170"/><br/>
-      <strong>Speed Challenge</strong><br/>
-      <sub>Timed mastery test</sub>
-    </td>
-  </tr>
-</table>
-
----
+### 📚 Learning Modes (2 Screens)
+<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123823.png" width="220"/><br/> <strong>AI Conversation</strong><br/> <sub>Practice with AI tutor</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251231_020417.png" width="220"/><br/> <strong>Speed Challenge</strong><br/> <sub>Timed vocabulary tests</sub> </td> </tr> </table>
 
 ### 🗺️ Learning Roadmap (4 Screens)
+<table> <tr> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020332.png" width="180"/><br/> <strong>Course Path</strong><br/> <sub>Visual learning journey</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020349.png" width="180"/><br/> <strong>Week Focus</strong><br/> <sub>Current weekly lessons</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020401.png" width="180"/><br/> <strong>Session Details</strong><br/> <sub>Lesson breakdown</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020410.png" width="180"/><br/> <strong>Exam Prep</strong><br/> <sub>IELTS/TOEFL modules</sub> </td> </tr> </table>
 
-<table>
-  <tr>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020332.png" width="180"/><br/>
-      <strong>Course Path</strong><br/>
-      <sub>Visual journey</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020349.png" width="180"/><br/>
-      <strong>Week Focus</strong><br/>
-      <sub>Current lessons</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020401.png" width="180"/><br/>
-      <strong>Session Details</strong><br/>
-      <sub>Lesson breakdown</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251231_020410.png" width="180"/><br/>
-      <strong>Exam Prep</strong><br/>
-      <sub>IELTS/TOEFL modules</sub>
-    </td>
-  </tr>
-</table>
+### 📊 Analytics & Progress (2 Screens)
+<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123758.png" width="220"/><br/> <strong>Progress Overview</strong><br/> <sub>Learning metrics dashboard</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123811.png" width="220"/><br/> <strong>Learning Analytics</strong><br/> <sub>Performance tracking</sub> </td> </tr> </table>
 
----
-
-### 🔄 Practice & Review (1 Screen)
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="./screenshots/Screenshot_20251231_020423.png" width="250"/><br/>
-      <strong>Practice Dashboard</strong><br/>
-      <sub>23 words need review | 87% retention | Quick/Full/Custom sessions</sub>
-    </td>
-  </tr>
-</table>
-
----
-
-### 📊 Analytics & Progress (4 Screens)
-
-<table>
-  <tr>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123758.png" width="180"/><br/>
-      <strong>Metrics Overview</strong><br/>
-      <sub>1,280 words | 88% retention</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123811.png" width="180"/><br/>
-      <strong>Learning Time</strong><br/>
-      <sub>Daily minute charts</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123959.png" width="180"/><br/>
-      <strong>Growth Chart</strong><br/>
-      <sub>Vocabulary accumulation</sub>
-    </td>
-    <td width="25%" align="center">
-      <img src="./screenshots/Screenshot_20251230_123959.png" width="180"/><br/>
-      <strong>Activity Heatmap</strong><br/>
-      <sub>GitHub-style calendar</sub>
-    </td>
-  </tr>
-</table>
-
-**Forgetting Curve Visualization**
-<p align="center">
-  <img src="./screenshots/Screenshot_20251230_123811.png" width="400"/><br/>
-  <sub>Purple line: Memory with spaced repetition | Dotted line: Without review</sub>
-</p>
-
-**Achievements Gallery**
-<p align="center">
-  <img src="./screenshots/Screenshot_20251230_123959.png" width="400"/><br/>
-  <sub>🔥 7-Day Streak | 🌅 Early Bird | 📚 100 Words | With rarity percentages</sub>
-</p>
-
----
-
-### ⚙️ Settings & Profile (6 Screens)
-
-<table>
-  <tr>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_124905.png" width="190"/><br/>
-      <strong>Profile</strong><br/>
-      <sub>Albert | Lvl 12 | Language Learner</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_125010.png" width="190"/><br/>
-      <strong>General Settings</strong><br/>
-      <sub>Premium, Account, Daily Goal (30 min)</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251230_124901.png" width="190"/><br/>
-      <strong>Theme</strong><br/>
-      <sub>Light/Dark/System</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251228_211612.png" width="190"/><br/>
-      <strong>Notifications</strong><br/>
-      <sub>Smart reminder controls</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251228_211612.png" width="190"/><br/>
-      <strong>Data Management</strong><br/>
-      <sub>Export, clear, delete options</sub>
-    </td>
-    <td width="33%" align="center">
-      <img src="./screenshots/Screenshot_20251228_211633.png" width="190"/><br/>
-      <strong>About</strong><br/>
-      <sub>Version, legal, support</sub>
-    </td>
-  </tr>
-</table>
-
----
+### ⚙️ Settings & Profile (2 Screens)
+<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_124905.png" width="220"/><br/> <strong>User Profile</strong><br/> <sub>Account information</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_125010.png" width="220"/><br/> <strong>App Settings</strong><br/> <sub>Customization options</sub> </td> </tr> </table>
 
 ### 🎮 Gamification Elements (2 Screens)
-
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251230_042958.png" width="220"/><br/>
-      <strong>Streak Tracking</strong><br/>
-      <sub>🔥 0 Day Streak | Don't break the chain! | Practice Now CTA</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="./screenshots/Screenshot_20251230_043011.png" width="220"/><br/>
-      <strong>Leaderboard</strong><br/>
-      <sub>Weekly rankings with XP totals | Friend vs Global tabs</sub>
-    </td>
-  </tr>
-</table>
-
+<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042958.png" width="220"/><br/> <strong>Rewards System</strong><br/> <sub>Progress tracking & achievements</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_043011.png" width="220"/><br/> <strong>Leaderboard</strong><br/> <sub>Rankings and competition</sub> </td> </tr> </table>
 ---
 
 ## 🏗️ Technical Architecture
@@ -501,7 +251,7 @@ FIREBASE_PROJECT_ID=your_project_id
 
 ## 🤝 Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! 
 
 ### Development Workflow
 1. Fork the repository
