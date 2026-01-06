@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.perf)
     alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -117,8 +118,8 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    // Gson
-    implementation(libs.gson)
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
 
     // Google AI SDK (Gemini)
     implementation(libs.google.generative.ai)

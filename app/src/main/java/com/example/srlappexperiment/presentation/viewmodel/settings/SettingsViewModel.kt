@@ -10,11 +10,12 @@ import com.example.srlappexperiment.domain.model.UserPreferences
 import com.example.srlappexperiment.domain.repository.AuthRepository
 import com.example.srlappexperiment.domain.repository.PreferencesRepository
 import com.example.srlappexperiment.domain.repository.UserRepository
-import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.File
 import javax.inject.Inject
 
@@ -108,11 +109,28 @@ class SettingsViewModel @Inject constructor(
                 val notifs = notificationSettings.value
                 val exportData = mapOf(
                     "preferences" to prefs,
-                    "notifications" to notifs,
-                    "export_date" to System.currentTimeMillis()
+                    "notifications" to notifs
+                    // "export_date" to System.currentTimeMillis() // Removed for simplicity in map or handle differently if needed but standard map with mixed types needs JsonElement or similar.
+                    // For now keeping it simple as specific objects, or we can make a wrapper class.
+                    // Let's create a wrapper map structure that serialization can handle easily if we want to mix types, 
+                    // or just encode the specific objects individually or in a wrapper class.
+                    // Ideally we should have an ExportData class.
+                    // However, to keep it simple and match previous logic which produced a JSON object:
                 )
                 
-                val json = Gson().toJson(exportData)
+                // Constructing a map of Strings to what? 'Any' is not serializable by default.
+                // It's better to define a data class for export.
+                
+                @Serializable
+                data class ExportData(
+                    val preferences: UserPreferences,
+                    val notifications: NotificationSettings,
+                    val exportDate: Long
+                )
+
+                val data = ExportData(prefs, notifs, System.currentTimeMillis())
+                val json = Json.encodeToString(data)
+                
                 val file = File(context.cacheDir, "srl_app_data_export.json")
                 file.writeText(json)
                 

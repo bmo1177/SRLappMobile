@@ -1,5 +1,9 @@
 package com.example.srlappexperiment.presentation.ui.screens.vocabulary
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -17,12 +22,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
+import com.example.srlappexperiment.presentation.ui.components.EmptyState
 import com.example.srlappexperiment.presentation.ui.components.ModernCard
+import com.example.srlappexperiment.presentation.ui.components.SkeletonItem
 import com.example.srlappexperiment.presentation.viewmodel.vocabulary.VocabularyLibraryViewModel
 import com.example.srlappexperiment.ui.theme.*
 
@@ -35,6 +44,7 @@ fun VocabularyLibraryScreen(
     val cards by viewModel.filteredCards.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     val selectedDifficulty by viewModel.selectedDifficulty.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
 
     Scaffold(
         topBar = {
@@ -68,7 +78,8 @@ fun VocabularyLibraryScreen(
                 onValueChange = { viewModel.setSearchQuery(it) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 16.dp)
+                    .semantics { contentDescription = "Search vocabulary" },
                 placeholder = { Text("Search words...") },
                 leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = PrimaryPurple) },
                 trailingIcon = { 
@@ -107,15 +118,47 @@ fun VocabularyLibraryScreen(
                 }
             }
 
-            // Word List
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = PaddingValues(bottom = 24.dp)
-            ) {
-                items(cards) { card ->
-                    LibraryWordItem(card = card)
+            // Content Area with Crossfade
+            AnimatedContent(
+                targetState = isLoading,
+                transitionSpec = { fadeIn() togetherWith fadeOut() },
+                label = "LibraryContent"
+            ) { loading ->
+                if (loading) {
+                    LibrarySkeleton()
+                } else if (cards.isEmpty()) {
+                    EmptyState(
+                        title = "No words found",
+                        subtitle = if (searchQuery.isNotEmpty()) "Try adjusting your search query" else "Your library is empty. Start learning!",
+                        icon = Icons.Default.Info,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                } else {
+                    LazyColumn(
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        contentPadding = PaddingValues(bottom = 24.dp)
+                    ) {
+                        items(
+                            items = cards,
+                            key = { it.id } // Key optimizations for LazyColumn
+                        ) { card ->
+                            LibraryWordItem(card = card)
+                        }
+                    }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun LibrarySkeleton() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        repeat(5) {
+            SkeletonItem(modifier = Modifier.fillMaxWidth().height(100.dp))
         }
     }
 }
@@ -129,7 +172,8 @@ fun DifficultyChip(
     Surface(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp))
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick)
+            .semantics { contentDescription = "Filter by $label" },
         color = if (isSelected) PrimaryPurple else SurfaceLight,
         border = if (isSelected) null else BorderStroke(1.dp, SilverAccent.copy(alpha = 0.3f))
     ) {
@@ -150,7 +194,7 @@ fun DifficultyChip(
 @Composable
 fun LibraryWordItem(card: VocabularyCard) {
     ModernCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().semantics { contentDescription = "Word: ${card.word}, Translation: ${card.translation}" },
         backgroundColor = SurfaceLight,
         shape = RoundedCornerShape(20.dp),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp)
