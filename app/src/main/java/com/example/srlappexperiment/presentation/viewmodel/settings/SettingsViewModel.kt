@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.Serializable
 import java.io.File
 import javax.inject.Inject
 
@@ -121,13 +122,6 @@ class SettingsViewModel @Inject constructor(
                 // Constructing a map of Strings to what? 'Any' is not serializable by default.
                 // It's better to define a data class for export.
                 
-                @Serializable
-                data class ExportData(
-                    val preferences: UserPreferences,
-                    val notifications: NotificationSettings,
-                    val exportDate: Long
-                )
-
                 val data = ExportData(prefs, notifs, System.currentTimeMillis())
                 val json = Json.encodeToString(data)
                 
@@ -159,3 +153,10 @@ sealed class SettingsUiState {
     data class Error(val message: String) : SettingsUiState()
     data class ExportSuccess(val uri: Uri) : SettingsUiState()
 }
+
+@Serializable
+data class ExportData(
+    val preferences: UserPreferences,
+    val notifications: NotificationSettings,
+    val exportDate: Long
+)
