@@ -41,6 +41,7 @@ class DashboardViewModel @Inject constructor(
         vocabularyRepository.getNewCards(Int.MAX_VALUE).catch { emit(emptyList<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>()) },
         progressRepository.getProgressRange(getPastDate(30), getCurrentDate()).catch { emit(emptyList<com.example.srlappexperiment.data.local.database.entities.DailyProgress>()) }
     ) { args: Array<Any?> ->
+        @Suppress("UNCHECKED_CAST")
         try {
             val currentStreak = (args[0] as? Int) ?: 0
             val longestStreak = (args[1] as? Int) ?: 0

@@ -1,11 +1,13 @@
 package com.example.srlappexperiment.data.remote.ai
 
-import com.google.ai.client.generativeai.GenerativeModel
 import com.example.srlappexperiment.BuildConfig
+import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.GenerateContentResponse
 import com.google.ai.client.generativeai.type.generationConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,6 +29,12 @@ class GeminiManager @Inject constructor() {
                 maxOutputTokens = 1024
             }
         )
+    }
+
+    private val jsonParser = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+        coerceInputValues = true
     }
 
     /**
@@ -61,7 +69,7 @@ class GeminiManager @Inject constructor() {
 
         try {
             val response = model.generateContent(prompt)
-            parseVocabularyExplanation(response)
+            parseJson<VocabularyExplanation>(response)
         } catch (e: Exception) {
             // Fallback to basic explanation if API fails
             VocabularyExplanation(
@@ -100,7 +108,7 @@ class GeminiManager @Inject constructor() {
 
         try {
             val response = model.generateContent(prompt)
-            parseDistractors(response)
+            parseJson<List<String>>(response)
         } catch (e: Exception) {
             // Fallback to generic distractors
             listOf("Option A", "Option B", "Option C")
@@ -155,77 +163,47 @@ class GeminiManager @Inject constructor() {
     }
 
     /**
-     * Parse the AI response for vocabulary explanation
+     * Parse the AI response as a generic JSON type.
+     * Handles cleaning of markdown code blocks and finding JSON content.
      */
-    private fun parseVocabularyExplanation(response: GenerateContentResponse): VocabularyExplanation {
+    private inline fun <reified T> parseJson(response: GenerateContentResponse): T {
         val text = response.text ?: throw Exception("Empty response")
         
-        // Simple JSON parsing (in production, use Gson or kotlinx.serialization)
-        return try {
-            // Remove markdown code blocks if present
-            val cleanJson = text.trim()
-                .removePrefix("```json")
-                .removePrefix("```")
-                .removeSuffix("```")
-                .trim()
+        // Extract JSON using Regex
+        val jsonContent = extractJsonContent(text)
             
-            // Basic parsing - in production use proper JSON library
-            VocabularyExplanation(
-                mnemonic = extractJsonField(cleanJson, "mnemonic"),
-                contextSentence = extractJsonField(cleanJson, "contextSentence"),
-                usageTips = extractJsonField(cleanJson, "usageTips"),
-                synonyms = extractJsonArray(cleanJson, "synonyms")
-            )
-        } catch (e: Exception) {
-            throw Exception("Failed to parse AI response: ${e.message}")
+        return jsonParser.decodeFromString(jsonContent)
+    }
+
+    /**
+     * Extracts JSON content from a string, handling markdown code blocks and raw JSON.
+     */
+    private fun extractJsonContent(text: String): String {
+        // Try to find markdown code block first
+        val jsonBlockRegex = Regex("```(?:json)?\\s*([\\s\\S]*?)\\s*```")
+        val matchResult = jsonBlockRegex.find(text)
+        
+        if (matchResult != null) {
+            return matchResult.groupValues[1].trim()
         }
-    }
 
-    /**
-     * Parse distractors from AI response
-     */
-    private fun parseDistractors(response: GenerateContentResponse): List<String> {
-        val text = response.text ?: return emptyList()
-        
-        val cleanJson = text.trim()
-            .removePrefix("```json")
-            .removePrefix("```")
-            .removeSuffix("```")
-            .trim()
-        
-        // Extract array items - basic parsing
-        return extractJsonArray(cleanJson, null)
-    }
+        // If no code block, try to find the first '{' or '[' and the last '}' or ']'
+        val firstBrace = text.indexOfFirst { it == '{' || it == '[' }
+        val lastBrace = text.indexOfLast { it == '}' || it == ']' }
 
-    /**
-     * Basic JSON field extractor (replace with proper JSON library in production)
-     */
-    private fun extractJsonField(json: String, fieldName: String): String {
-        val pattern = """"$fieldName"\s*:\s*"([^"]*)"""".toRegex()
-        return pattern.find(json)?.groupValues?.get(1) ?: ""
-    }
-
-    /**
-     * Basic JSON array extractor
-     */
-    private fun extractJsonArray(json: String, fieldName: String?): List<String> {
-        val arrayPattern = if (fieldName != null) {
-            """"$fieldName"\s*:\s*\[(.*?)\]""".toRegex()
-        } else {
-            """\[(.*?)\]""".toRegex()
+        if (firstBrace != -1 && lastBrace != -1 && lastBrace > firstBrace) {
+            return text.substring(firstBrace, lastBrace + 1)
         }
-        
-        val arrayContent = arrayPattern.find(json)?.groupValues?.get(1) ?: return emptyList()
-        
-        return arrayContent.split(",")
-            .map { it.trim().removeSurrounding("\"") }
-            .filter { it.isNotEmpty() }
+
+        // Return original text if no pattern matches (might fail parsing, but worth a try if clean)
+        return text.trim()
     }
 }
 
 /**
  * Data class for AI-generated vocabulary explanation
  */
+@Serializable
 data class VocabularyExplanation(
     val mnemonic: String,
     val contextSentence: String,
