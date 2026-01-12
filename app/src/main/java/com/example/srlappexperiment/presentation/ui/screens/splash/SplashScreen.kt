@@ -14,12 +14,12 @@ import com.example.srlappexperiment.R
 import com.example.srlappexperiment.ui.components.GradientStyle
 import com.example.srlappexperiment.ui.components.premiumBackground
 import kotlinx.coroutines.delay
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.srlappexperiment.presentation.viewmodel.MainViewModel
 
 @Composable
 fun SplashScreen(
-    viewModel: MainViewModel = viewModel(),
+    viewModel: MainViewModel = hiltViewModel(),
     onNavigate: (String) -> Unit
 ) {
     var startAnimation by remember { mutableStateOf(false) }

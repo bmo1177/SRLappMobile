@@ -61,29 +61,124 @@ A production-ready Android application revolutionizing language learning through
 ---
 
 ## 📱 Visual Walkthrough
-### 🎬 Onboarding Journey (5 Screens)
-<table> <tr> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123758.png" width="180"/><br/> <strong>Welcome Screen</strong><br/> <sub>Multi-language greeting with app introduction</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123811.png" width="180"/><br/> <strong>Spaced Repetition</strong><br/> <sub>AI remembers what you forget</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_123823.png" width="180"/><br/> <strong>AI Personalization</strong><br/> <sub>Your unique language path</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_042958.png" width="180"/><br/> <strong>Gamification</strong><br/> <sub>Progress tracking & rewards</sub> </td> <td width="20%" align="center"> <img src="./screenshots/Screenshot_20251230_043011.png" width="180"/><br/> <strong>Offline Learning</strong><br/> <sub>Learn anywhere without internet</sub> </td> </tr> </table>
 
-### 🎯 Personalization Setup (2 Screens)
-<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042919.png" width="220"/><br/> <strong>Goal Setting</strong><br/> <sub>Choose your learning purpose</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042931.png" width="220"/><br/> <strong>Level Assessment</strong><br/> <sub>CEFR levels from Beginner to Advanced</sub> </td> </tr> </table>
+### 🎬 Onboarding & Welcome (5 Screens)
+<table>
+  <tr>
+    <td width="20%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123758.png" width="180"/><br/>
+      <strong>Welcome</strong><br/>
+      <sub>Multi-language greetings</sub>
+    </td>
+    <td width="20%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123811.png" width="180"/><br/>
+      <strong>Smart Learning</strong><br/>
+      <sub>AI retention focus</sub>
+    </td>
+    <td width="20%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123823.png" width="180"/><br/>
+      <strong>AI Personalization</strong><br/>
+      <sub>Unique learning paths</sub>
+    </td>
+    <td width="20%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123836.png" width="180"/><br/>
+      <strong>Make Progress</strong><br/>
+      <sub>Gamified rewards</sub>
+    </td>
+    <td width="20%" align="center">
+      <img src="./screenshots/Screenshot_20251230_123847.png" width="180"/><br/>
+      <strong>Offline Ready</strong><br/>
+      <sub>Learn anywhere</sub>
+    </td>
+  </tr>
+</table>
 
-### 🏠 Dashboard & Home (1 Screen)
-<table> <tr> <td align="center"> <img src="./screenshots/Screenshot_20251231_020325.png" width="250"/><br/> <strong>Main Dashboard</strong><br/> <sub>Progress overview and daily streak</sub> </td> </tr> </table>
+### 🔐 Authentication & Setup
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_125010.png" width="220"/><br/>
+      <strong>Login Portal</strong><br/>
+      <sub>Secure account access</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_124901.png" width="220"/><br/>
+      <strong>Fast Registration</strong><br/>
+      <sub>Quick user onboarding</sub>
+    </td>
+  </tr>
+</table>
 
-### 📚 Learning Modes (2 Screens)
-<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123823.png" width="220"/><br/> <strong>AI Conversation</strong><br/> <sub>Practice with AI tutor</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251231_020417.png" width="220"/><br/> <strong>Speed Challenge</strong><br/> <sub>Timed vocabulary tests</sub> </td> </tr> </table>
+### 🏠 Dashboard & Daily Practice
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020325.png" width="220"/><br/>
+      <strong>Main Dashboard</strong><br/>
+      <sub>Daily goals & streaks</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020332.png" width="220"/><br/>
+      <strong>Daily Challenges</strong><br/>
+      <sub>Skill-based missions</sub>
+    </td>
+  </tr>
+</table>
 
-### 🗺️ Learning Roadmap (4 Screens)
-<table> <tr> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020332.png" width="180"/><br/> <strong>Course Path</strong><br/> <sub>Visual learning journey</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020349.png" width="180"/><br/> <strong>Week Focus</strong><br/> <sub>Current weekly lessons</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020401.png" width="180"/><br/> <strong>Session Details</strong><br/> <sub>Lesson breakdown</sub> </td> <td width="25%" align="center"> <img src="./screenshots/Screenshot_20251231_020410.png" width="180"/><br/> <strong>Exam Prep</strong><br/> <sub>IELTS/TOEFL modules</sub> </td> </tr> </table>
+### 📚 Learning Tools & Library
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020349.png" width="220"/><br/>
+      <strong>Vocabulary Bank</strong><br/>
+      <sub>2,700+ word database</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_042848.png" width="220"/><br/>
+      <strong>Course Selection</strong><br/>
+      <sub>CEFR-aligned paths</sub>
+    </td>
+  </tr>
+</table>
 
-### 📊 Analytics & Progress (2 Screens)
-<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123758.png" width="220"/><br/> <strong>Progress Overview</strong><br/> <sub>Learning metrics dashboard</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_123811.png" width="220"/><br/> <strong>Learning Analytics</strong><br/> <sub>Performance tracking</sub> </td> </tr> </table>
+### 📊 Advanced Analytics & Insights
+<table>
+  <tr>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020401.png" width="180"/><br/>
+      <strong>Mastery Metrics</strong><br/>
+      <sub>Retention tracking</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020410.png" width="180"/><br/>
+      <strong>Memory Science</strong><br/>
+      <sub>The Forgetting Curve</sub>
+    </td>
+    <td width="33%" align="center">
+      <img src="./screenshots/Screenshot_20251231_020417.png" width="180"/><br/>
+      <strong>Contribution Map</strong><br/>
+      <sub>GitHub-style activity</sub>
+    </td>
+  </tr>
+</table>
 
-### ⚙️ Settings & Profile (2 Screens)
-<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_124905.png" width="220"/><br/> <strong>User Profile</strong><br/> <sub>Account information</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_125010.png" width="220"/><br/> <strong>App Settings</strong><br/> <sub>Customization options</sub> </td> </tr> </table>
+### ⚙️ Settings & Personalization
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_124905.png" width="220"/><br/>
+      <strong>User Profile</strong><br/>
+      <sub>Personalized experience</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="./screenshots/Screenshot_20251230_043011.png" width="220"/><br/>
+      <strong>System Controls</strong><br/>
+      <sub>Advanced app settings</sub>
+    </td>
+  </tr>
+</table>
 
-### 🎮 Gamification Elements (2 Screens)
-<table> <tr> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_042958.png" width="220"/><br/> <strong>Rewards System</strong><br/> <sub>Progress tracking & achievements</sub> </td> <td width="50%" align="center"> <img src="./screenshots/Screenshot_20251230_043011.png" width="220"/><br/> <strong>Leaderboard</strong><br/> <sub>Rankings and competition</sub> </td> </tr> </table>
+
 ---
 
 ## 🏗️ Technical Architecture
