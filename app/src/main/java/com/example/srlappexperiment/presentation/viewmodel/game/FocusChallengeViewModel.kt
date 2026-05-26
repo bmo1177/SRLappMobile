@@ -37,7 +37,7 @@ class FocusChallengeViewModel @Inject constructor(
     private val _currentQuestion = MutableStateFlow<Question?>(null)
     val currentQuestion: StateFlow<Question?> = _currentQuestion.asStateFlow()
 
-    private val _timeRemaining = MutableStateFlow(90)
+    private val _timeRemaining = MutableStateFlow(DEFAULT_GAME_SECONDS)
     val timeRemaining: StateFlow<Int> = _timeRemaining.asStateFlow()
 
     private val _score = MutableStateFlow(0)
@@ -69,7 +69,9 @@ class FocusChallengeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            repository.getAllCards().collect {
+            repository.getAllCards().catch { e ->
+                // Log error but keep empty list
+            }.collect {
                 allCards = it
             }
         }
@@ -81,7 +83,7 @@ class FocusChallengeViewModel @Inject constructor(
         _accuracy.value = 0f
         _combo.value = 0
         _maxCombo.value = 0
-        _timeRemaining.value = 90
+        _timeRemaining.value = DEFAULT_GAME_SECONDS
         _isGameOver.value = false
         _gameResult.value = null
         questionsAnswered = 0
@@ -111,7 +113,7 @@ class FocusChallengeViewModel @Inject constructor(
     }
 
     private fun generateNextQuestion() {
-        if (allCards.size < 4) return
+        if (allCards.size < MIN_CARDS_FOR_QUIZ) return
 
         val segmentCards = allCards.filter { 
             it.difficulty.equals(currentDifficulty, ignoreCase = true) 
@@ -120,7 +122,7 @@ class FocusChallengeViewModel @Inject constructor(
         val correctCard = segmentCards.random()
         val distractors = allCards.filter { it.id != correctCard.id }
             .shuffled()
-            .take(3)
+            .take(DISTRACTOR_COUNT)
 
         val options = (distractors + correctCard).shuffled()
         val correctIndex = options.indexOf(correctCard)
@@ -172,24 +174,31 @@ class FocusChallengeViewModel @Inject constructor(
             _combo.value += 1
             if (_combo.value > _maxCombo.value) _maxCombo.value = _combo.value
             
-            // Scoring: +10 base, x2 if combo >= 5
-            val points = if (_combo.value >= 5) 20 else 10
+            val points = if (_combo.value >= COMBO_THRESHOLD) COMBO_BONUS else BASE_SCORE
             _score.value += points
-            
-            // In a real app, we'd also update the card's SM-2 stats
-            // viewModelScope.launch { spaceRepEngine.markCardReviewed(current.originalCard.id, 5) }
         } else {
             _combo.value = 0
-            _score.value = (_score.value - 5).coerceAtLeast(0)
+            _score.value = (_score.value - PENALTY).coerceAtLeast(0)
         }
 
         _accuracy.value = (correctAnswers.toFloat() / questionsAnswered.toFloat()) * 100f
         
         // Pacing based on difficulty (simulated briefly with a short delay before next)
         viewModelScope.launch {
-            delay(300) // Brief visual feedback delay
+            delay(VISUAL_FEEDBACK_DELAY_MS)
             generateNextQuestion()
         }
+    }
+
+    companion object {
+        const val DEFAULT_GAME_SECONDS = 90
+        private const val MIN_CARDS_FOR_QUIZ = 4
+        private const val DISTRACTOR_COUNT = 3
+        private const val COMBO_THRESHOLD = 5
+        private const val BASE_SCORE = 10
+        private const val COMBO_BONUS = 20
+        private const val PENALTY = 5
+        private const val VISUAL_FEEDBACK_DELAY_MS = 300L
     }
 
     fun endGame() {

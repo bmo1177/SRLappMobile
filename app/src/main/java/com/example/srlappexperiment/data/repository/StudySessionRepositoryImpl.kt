@@ -33,4 +33,12 @@ class StudySessionRepositoryImpl @Inject constructor(
     override fun getSessionCount(): Flow<Int> {
         return studySessionDao.getSessionCount()
     }
+
+    override fun getUnsyncedSessions(): Flow<List<StudySession>> {
+        return studySessionDao.getUnsyncedSessions()
+    }
+
+    override suspend fun markSessionsSynced(ids: List<Long>) {
+        studySessionDao.markSynced(ids)
+    }
 }

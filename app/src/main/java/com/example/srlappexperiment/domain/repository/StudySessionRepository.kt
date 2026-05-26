@@ -12,4 +12,6 @@ interface StudySessionRepository {
     fun getTotalStudyTimeMinutes(): Flow<Int>
     fun getAverageAccuracy(): Flow<Float>
     fun getSessionCount(): Flow<Int>
+    fun getUnsyncedSessions(): Flow<List<StudySession>>
+    suspend fun markSessionsSynced(ids: List<Long>)
 }

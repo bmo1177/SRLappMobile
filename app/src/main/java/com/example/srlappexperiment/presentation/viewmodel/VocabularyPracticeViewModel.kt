@@ -16,8 +16,11 @@ import com.example.srlappexperiment.util.Constants
 import com.google.firebase.perf.FirebasePerformance
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -71,8 +74,9 @@ class VocabularyPracticeViewModel @Inject constructor(
     private val _noCardsAvailable = MutableStateFlow(false)
     val noCardsAvailable: StateFlow<Boolean> = _noCardsAvailable.asStateFlow()
     
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
+    // One-shot effects (not persistent state)
+    private val _effects = MutableSharedFlow<SessionEffect>()
+    val effects: SharedFlow<SessionEffect> = _effects.asSharedFlow()
     
     private val _aiExplanation = MutableStateFlow<VocabularyExplanation?>(null)
     val aiExplanation: StateFlow<VocabularyExplanation?> = _aiExplanation.asStateFlow()
@@ -96,7 +100,6 @@ class VocabularyPracticeViewModel @Inject constructor(
             try {
                 _isLoading.value = true
                 _noCardsAvailable.value = false
-                _errorMessage.value = null
                 
                 val trace = firebasePerformance.newTrace("session_load_time")
                 trace.start()
@@ -168,7 +171,7 @@ class VocabularyPracticeViewModel @Inject constructor(
                 
                 trace.stop()
             } catch (e: Exception) {
-                _errorMessage.value = "Failed to load cards: ${e.message}"
+                _effects.emit(SessionEffect.ShowError("Failed to load cards: ${e.message}"))
                 _isLoading.value = false
             }
         }
@@ -224,14 +227,10 @@ class VocabularyPracticeViewModel @Inject constructor(
                 )
                 
                 // Asynchronous DB save (Optimistic)
-                launch {
-                    try {
-                        vocabularyRepository.updateCard(updatedCard)
-                    } catch (e: Exception) {
-                        // In a real app, we might handle rollback or retry, 
-                        // but for now we'll just log or show a silent error
-                        _errorMessage.value = "Sync failed, but progress is saved locally."
-                    }
+                try {
+                    vocabularyRepository.updateCard(updatedCard)
+                } catch (e: Exception) {
+                    _effects.emit(SessionEffect.ShowError("Sync failed, but progress is saved locally."))
                 }
                 
                 // Reduced delay for "Elite" feel (200ms instead of 500ms)
@@ -240,7 +239,7 @@ class VocabularyPracticeViewModel @Inject constructor(
                 advanceToNextCard()
                 
             } catch (e: Exception) {
-                _errorMessage.value = "Failed to process review: ${e.message}"
+                _effects.emit(SessionEffect.ShowError("Failed to process review: ${e.message}"))
                 _isRatingEnabled.value = true
             }
         }
@@ -324,15 +323,8 @@ class VocabularyPracticeViewModel @Inject constructor(
             )
             vocabularyRepository.saveStudySession(session)
         } catch (e: Exception) {
-            _errorMessage.value = "Failed to save session: ${e.message}"
+            _effects.emit(SessionEffect.ShowError("Failed to save session: ${e.message}"))
         }
-    }
-
-    /**
-     * Clear any error message
-     */
-    fun clearError() {
-        _errorMessage.value = null
     }
     
     /**
@@ -363,7 +355,7 @@ class VocabularyPracticeViewModel @Inject constructor(
                 _aiExplanation.value = explanation
                 _isLoadingExplanation.value = false
             } catch (e: Exception) {
-                _errorMessage.value = "Failed to get AI explanation: ${e.message}"
+                _effects.emit(SessionEffect.ShowError("Failed to get AI explanation: ${e.message}"))
                 _isLoadingExplanation.value = false
             }
         }
@@ -409,6 +401,10 @@ class VocabularyPracticeViewModel @Inject constructor(
         val createdAt = user?.createdAt ?: System.currentTimeMillis()
         val msDiff = System.currentTimeMillis() - createdAt
         return (msDiff / (1000 * 60 * 60 * 24)).toInt() + 1
+    }
+
+    sealed class SessionEffect {
+        data class ShowError(val message: String) : SessionEffect()
     }
 
     companion object {

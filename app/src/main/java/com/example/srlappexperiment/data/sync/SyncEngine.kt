@@ -3,15 +3,16 @@ package com.example.srlappexperiment.data.sync
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.example.srlappexperiment.data.local.database.AppDatabase
 import com.example.srlappexperiment.data.local.database.entities.DailyProgress
 import com.example.srlappexperiment.data.local.database.entities.StudySession
 import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
 import com.example.srlappexperiment.domain.model.SyncResult
 import com.example.srlappexperiment.domain.model.SyncStatus
 import com.example.srlappexperiment.domain.repository.AuthRepository
+import com.example.srlappexperiment.domain.repository.VocabularyRepository
+import com.example.srlappexperiment.domain.repository.StudySessionRepository
+import com.example.srlappexperiment.domain.repository.ProgressRepository
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
@@ -21,7 +22,9 @@ import com.google.firebase.perf.FirebasePerformance
 
 @Singleton
 class SyncEngine @Inject constructor(
-    private val localDb: AppDatabase,
+    private val vocabularyRepository: VocabularyRepository,
+    private val studySessionRepository: StudySessionRepository,
+    private val progressRepository: ProgressRepository,
     private val firestore: FirebaseFirestore,
     private val authRepository: AuthRepository,
     private val firebasePerformance: FirebasePerformance,
@@ -32,12 +35,10 @@ class SyncEngine @Inject constructor(
 
     private val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    fun observeSyncStatus(): Flow<SyncStatus> = syncStatus
-
     suspend fun syncAll(): Result<SyncResult> {
         if (!isOnline()) return Result.failure(Exception("No internet connection"))
-        
-        val userId = authRepository.getCurrentUser().firstOrNull()?.id 
+
+        val userId = authRepository.getCurrentUser().firstOrNull()?.id
             ?: return Result.failure(Exception("User not authenticated"))
 
         _syncStatus.value = SyncStatus.Syncing
@@ -68,11 +69,9 @@ class SyncEngine @Inject constructor(
     }
 
     suspend fun syncVocabularyCards(userId: String): Int {
-        val cardDao = localDb.vocabularyCardDao()
         var syncedCount = 0
 
-        // 1. Upload unsynced
-        val unsynced = cardDao.getUnsyncedCards().first()
+        val unsynced = vocabularyRepository.getUnsyncedCards().first()
         unsynced.forEach { card ->
             firestore.collection("users").document(userId)
                 .collection("vocabulary_cards").document(card.id)
@@ -80,30 +79,27 @@ class SyncEngine @Inject constructor(
             syncedCount++
         }
         if (unsynced.isNotEmpty()) {
-            cardDao.markSynced(unsynced.map { it.id })
+            vocabularyRepository.markCardsSynced(unsynced.map { it.id })
         }
 
-        // 2. Download updates (Server Wins)
         val snapshot = firestore.collection("users").document(userId)
             .collection("vocabulary_cards")
             .get().await()
-        
+
         val remoteCards = snapshot.toObjects(VocabularyCard::class.java)
-        if (remoteCards.isNotEmpty()) {
-            // "Server Wins" logic: Replace all local with remote if they exist in remote
-            // In a more complex app, we'd check timestamps, but here we follow server authority.
-            val updatedRemoteCards = remoteCards.map { it.copy(synced = true) }
-            cardDao.insertAll(updatedRemoteCards)
+        val unsyncedIds = unsynced.map { it.id }.toSet()
+        val newRemoteCards = remoteCards.filter { it.id !in unsyncedIds }
+        if (newRemoteCards.isNotEmpty()) {
+            vocabularyRepository.upsertCards(newRemoteCards.map { it.copy(synced = true) })
         }
 
         return syncedCount
     }
 
     suspend fun syncStudySessions(userId: String): Int {
-        val sessionDao = localDb.studySessionDao()
         var syncedCount = 0
 
-        val unsynced = sessionDao.getUnsyncedSessions().first()
+        val unsynced = studySessionRepository.getUnsyncedSessions().first()
         unsynced.forEach { session ->
             firestore.collection("users").document(userId)
                 .collection("study_sessions").document(session.id.toString())
@@ -111,18 +107,16 @@ class SyncEngine @Inject constructor(
             syncedCount++
         }
         if (unsynced.isNotEmpty()) {
-            sessionDao.markSynced(unsynced.map { it.id })
+            studySessionRepository.markSessionsSynced(unsynced.map { it.id })
         }
 
         return syncedCount
     }
 
     suspend fun syncProgress(userId: String): Int {
-        val progressDao = localDb.dailyProgressDao()
         var syncedCount = 0
 
-        // 1. Upload unsynced
-        val unsynced = progressDao.getUnsyncedProgress().first()
+        val unsynced = progressRepository.getUnsyncedProgress().first()
         unsynced.forEach { progress ->
             firestore.collection("users").document(userId)
                 .collection("daily_progress").document(progress.date)
@@ -130,19 +124,17 @@ class SyncEngine @Inject constructor(
             syncedCount++
         }
         if (unsynced.isNotEmpty()) {
-            progressDao.markSynced(unsynced.map { it.date })
+            progressRepository.markProgressSynced(unsynced.map { it.date })
         }
 
-        // 2. Download (Protect local newer data)
         val snapshot = firestore.collection("users").document(userId)
             .collection("daily_progress").get().await()
-        
+
         val remoteProgress = snapshot.toObjects(DailyProgress::class.java)
-        remoteProgress.forEach { remote ->
-            val local = progressDao.getByDate(remote.date).first()
-            if (local == null || remote.updatedAt > local.updatedAt) {
-                progressDao.insert(remote.copy(synced = true))
-            }
+        val unsyncedDates = unsynced.map { it.date }.toSet()
+        val newRemote = remoteProgress.filter { it.date !in unsyncedDates }
+        if (newRemote.isNotEmpty()) {
+            progressRepository.upsertProgress(newRemote.map { it.copy(synced = true) })
         }
 
         return syncedCount

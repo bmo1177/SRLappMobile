@@ -50,4 +50,14 @@ interface VocabularyRepository {
      * Get cards that haven't been synced to Firestore
      */
     fun getUnsyncedCards(): Flow<List<VocabularyCard>>
+
+    /**
+     * Mark cards as synced
+     */
+    suspend fun markCardsSynced(ids: List<String>)
+
+    /**
+     * Upsert a list of cards (for sync downloads)
+     */
+    suspend fun upsertCards(cards: List<VocabularyCard>)
 }

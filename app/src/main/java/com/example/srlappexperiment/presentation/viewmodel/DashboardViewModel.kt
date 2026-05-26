@@ -37,20 +37,22 @@ class DashboardViewModel @Inject constructor(
         vocabularyRepository.getTotalCardsLearned().catch { emit(0) },
         studySessionRepository.getAverageAccuracy().catch { emit(0f) },
         studySessionRepository.getTotalStudyTimeMinutes().catch { emit(0) },
-        vocabularyRepository.getDueCards(Int.MAX_VALUE).catch { emit(emptyList<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>()) },
-        vocabularyRepository.getNewCards(Int.MAX_VALUE).catch { emit(emptyList<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>()) },
-        progressRepository.getProgressRange(getPastDate(30), getCurrentDate()).catch { emit(emptyList<com.example.srlappexperiment.data.local.database.entities.DailyProgress>()) }
-    ) { args: Array<Any?> ->
-        @Suppress("UNCHECKED_CAST")
+        vocabularyRepository.getDueCards(Int.MAX_VALUE).catch { emit(emptyList()) },
+        vocabularyRepository.getNewCards(Int.MAX_VALUE).catch { emit(emptyList()) },
+        progressRepository.getProgressRange(getPastDate(30), getCurrentDate()).catch { emit(emptyList()) }
+    ) { args ->
         try {
-            val currentStreak = (args[0] as? Int) ?: 0
-            val longestStreak = (args[1] as? Int) ?: 0
-            val learned = (args[2] as? Int) ?: 0
-            val accuracy = (args[3] as? Float) ?: 0f
-            val minutes = (args[4] as? Int) ?: 0
-            val due = (args[5] as? List<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>) ?: emptyList()
-            val new = (args[6] as? List<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>) ?: emptyList()
-            val recentProgress = (args[7] as? List<com.example.srlappexperiment.data.local.database.entities.DailyProgress>) ?: emptyList()
+            val currentStreak = args[0] as Int
+            val longestStreak = args[1] as Int
+            val learned = args[2] as Int
+            val accuracy = args[3] as Float
+            val minutes = args[4] as Int
+            @Suppress("UNCHECKED_CAST")
+            val due = args[5] as List<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>
+            @Suppress("UNCHECKED_CAST")
+            val new = args[6] as List<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>
+            @Suppress("UNCHECKED_CAST")
+            val recentProgress = args[7] as List<com.example.srlappexperiment.data.local.database.entities.DailyProgress>
 
             DashboardStats(
                 currentStreak = currentStreak,

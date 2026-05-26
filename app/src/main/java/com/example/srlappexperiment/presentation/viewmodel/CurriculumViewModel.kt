@@ -7,7 +7,6 @@ import com.example.srlappexperiment.data.local.database.entities.TeacherCompeten
 import com.example.srlappexperiment.data.local.database.entities.TeacherDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class CurriculumUiState(
@@ -31,18 +30,16 @@ class CurriculumViewModel @Inject constructor(
     private fun loadCurriculum() {
         viewModelScope.launch {
             teacherDao.getAllDomains()
-                .onEach { domains ->
-                    val competencesMap = mutableMapOf<Int, List<TeacherCompetence>>()
-                    domains.forEach { domain ->
-                        // In a real app we'd use a more efficient way to fetch all at once
-                        // but for pre-populated data this is fine for now
-                        teacherDao.getCompetencesByDomain(domain.domain_id).firstOrNull()?.let {
-                            competencesMap[domain.domain_id] = it
-                        }
-                    }
-                    _uiState.update { it.copy(domains = domains, competences = competencesMap, isLoading = false) }
+                .combine(teacherDao.getAllCompetences()) { domains, competences ->
+                    val competencesMap = competences.groupBy { it.domain_id }
+                    CurriculumUiState(domains = domains, competences = competencesMap, isLoading = false)
                 }
-                .collect()
+                .catch { e ->
+                    _uiState.update { it.copy(isLoading = false) }
+                }
+                .collect { state ->
+                    _uiState.value = state
+                }
         }
     }
 }

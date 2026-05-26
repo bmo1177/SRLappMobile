@@ -125,6 +125,14 @@ class VocabularyRepositoryImpl @Inject constructor(
         return vocabularyCardDao.getTotalCardsLearned()
     }
 
+    override suspend fun markCardsSynced(ids: List<String>) {
+        vocabularyCardDao.markSynced(ids)
+    }
+
+    override suspend fun upsertCards(cards: List<VocabularyCard>) {
+        vocabularyCardDao.insertAll(cards)
+    }
+
     /**
      * Invalidate all caches. Called when data is modified.
      */

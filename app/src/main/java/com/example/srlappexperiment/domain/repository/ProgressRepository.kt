@@ -12,4 +12,7 @@ interface ProgressRepository {
     fun getProgressRange(startDate: String, endDate: String): Flow<List<DailyProgress>>
     fun getCurrentStreak(): Flow<Int>
     fun getLongestStreak(): Flow<Int>
+    fun getUnsyncedProgress(): Flow<List<DailyProgress>>
+    suspend fun markProgressSynced(dates: List<String>)
+    suspend fun upsertProgress(progressList: List<DailyProgress>)
 }

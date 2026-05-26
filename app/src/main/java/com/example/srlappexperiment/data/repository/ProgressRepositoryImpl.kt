@@ -33,4 +33,16 @@ class ProgressRepositoryImpl @Inject constructor(
     override fun getLongestStreak(): Flow<Int> {
         return dailyProgressDao.getLongestStreak().map { it ?: 0 }
     }
+
+    override fun getUnsyncedProgress(): Flow<List<DailyProgress>> {
+        return dailyProgressDao.getUnsyncedProgress()
+    }
+
+    override suspend fun markProgressSynced(dates: List<String>) {
+        dailyProgressDao.markSynced(dates)
+    }
+
+    override suspend fun upsertProgress(progressList: List<DailyProgress>) {
+        dailyProgressDao.insertAll(progressList)
+    }
 }

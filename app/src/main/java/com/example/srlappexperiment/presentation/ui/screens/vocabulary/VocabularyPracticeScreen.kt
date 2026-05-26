@@ -78,7 +78,7 @@ fun VocabularyPracticeScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val isRatingEnabled by viewModel.isRatingEnabled.collectAsState()
     val noCardsAvailable by viewModel.noCardsAvailable.collectAsState()
-    val errorMessage by viewModel.errorMessage.collectAsState()
+
     val aiExplanation by viewModel.aiExplanation.collectAsState()
     val isLoadingExplanation by viewModel.isLoadingExplanation.collectAsState()
     
@@ -101,11 +101,14 @@ fun VocabularyPracticeScreen(
         }
     }
     
-    // Show error messages
-    LaunchedEffect(errorMessage) {
-        errorMessage?.let {
-            snackbarHostState.showSnackbar(it)
-            viewModel.clearError()
+    // Show error messages via one-shot effects
+    LaunchedEffect(Unit) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is com.example.srlappexperiment.presentation.viewmodel.VocabularyPracticeViewModel.SessionEffect.ShowError -> {
+                    snackbarHostState.showSnackbar(effect.message)
+                }
+            }
         }
     }
     

@@ -13,11 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -170,20 +165,10 @@ class FirebaseAuthManager @Inject constructor(
      * Observes auth state changes
      */
     fun getCurrentUser(): Flow<User?> = callbackFlow {
-        val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
-        
         val listener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val firebaseUser = firebaseAuth.currentUser
             if (firebaseUser != null) {
-                // Fetch user from Firestore using scoped coroutine
-                scope.launch {
-                    try {
-                        val user = getUserFromFirestore(firebaseUser.uid)
-                        trySend(user)
-                    } catch (e: Exception) {
-                        trySend(null)
-                    }
-                }
+                trySend(getUserFromFirestore(firebaseUser.uid))
             } else {
                 trySend(null)
             }
@@ -193,7 +178,6 @@ class FirebaseAuthManager @Inject constructor(
 
         awaitClose {
             auth.removeAuthStateListener(listener)
-            scope.cancel() // Cancel scope when flow is closed
         }
     }
 

@@ -21,6 +21,9 @@ interface TeacherDao {
     @Query("SELECT * FROM teacher_competences WHERE domain_id = :domainId")
     fun getCompetencesByDomain(domainId: Int): Flow<List<TeacherCompetence>>
 
+    @Query("SELECT * FROM teacher_competences")
+    fun getAllCompetences(): Flow<List<TeacherCompetence>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAbilities(abilities: List<TeacherAbility>)
 
