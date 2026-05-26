@@ -6,6 +6,8 @@ import com.example.srlappexperiment.data.analytics.AnalyticsManager
 import com.example.srlappexperiment.data.local.database.entities.StudySession
 import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
 import com.example.srlappexperiment.data.remote.ai.GeminiManager
+import com.example.srlappexperiment.presentation.model.VocabularyCardUi
+import com.example.srlappexperiment.presentation.model.toUi
 import com.example.srlappexperiment.data.remote.ai.VocabularyExplanation
 import com.example.srlappexperiment.domain.model.SessionProgress
 import com.example.srlappexperiment.domain.model.SessionStats
@@ -43,6 +45,9 @@ class VocabularyPracticeViewModel @Inject constructor(
     // Session cards
     private val _sessionCards = MutableStateFlow<List<VocabularyCard>>(emptyList())
     val sessionCards: StateFlow<List<VocabularyCard>> = _sessionCards.asStateFlow()
+
+    private val _sessionCardsUi = MutableStateFlow<List<VocabularyCardUi>>(emptyList())
+    val sessionCardsUi: StateFlow<List<VocabularyCardUi>> = _sessionCardsUi.asStateFlow()
     
     private var currentCardIndex = 0
     private var sessionStartTime = 0L
@@ -137,6 +142,7 @@ class VocabularyPracticeViewModel @Inject constructor(
                 }
                 
                 _sessionCards.value = allCards
+                _sessionCardsUi.value = allCards.toUi()
                 
                 // Track how many are new for stats
                 newCardsLearned = newCards.size

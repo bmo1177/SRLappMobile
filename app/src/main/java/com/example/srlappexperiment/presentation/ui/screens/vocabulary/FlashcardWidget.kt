@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
+import com.example.srlappexperiment.presentation.model.VocabularyCardUi
 import com.example.srlappexperiment.ui.theme.*
 import com.example.srlappexperiment.presentation.ui.components.ModernCard
 
@@ -31,7 +31,7 @@ import com.example.srlappexperiment.presentation.ui.components.ModernCard
  */
 @Composable
 fun FlashcardWidget(
-    card: VocabularyCard,
+    card: VocabularyCardUi,
     isFlipped: Boolean,
     onFlip: () -> Unit,
     onPronounce: (String) -> Unit = {},
@@ -81,7 +81,7 @@ fun FlashcardWidget(
 
 @Composable
 private fun FlashcardFront(
-    card: VocabularyCard,
+    card: VocabularyCardUi,
     onPronounce: (String) -> Unit
 ) {
     Column(
@@ -156,7 +156,7 @@ private fun FlashcardFront(
 }
 
 @Composable
-private fun FlashcardBack(card: VocabularyCard) {
+private fun FlashcardBack(card: VocabularyCardUi) {
     Column(
         modifier = Modifier.fillMaxSize().padding(32.dp),
         horizontalAlignment = Alignment.Start,

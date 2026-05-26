@@ -28,7 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
+import com.example.srlappexperiment.presentation.model.VocabularyCardUi
 import com.example.srlappexperiment.presentation.ui.components.EmptyState
 import com.example.srlappexperiment.presentation.ui.components.ModernCard
 import com.example.srlappexperiment.presentation.ui.components.SkeletonItem
@@ -41,7 +41,7 @@ fun VocabularyLibraryScreen(
     viewModel: VocabularyLibraryViewModel = hiltViewModel(),
     onNavigateBack: () -> Unit
 ) {
-    val cards by viewModel.filteredCards.collectAsState()
+    val cards by viewModel.filteredCardsUi.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     val selectedDifficulty by viewModel.selectedDifficulty.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
@@ -192,7 +192,7 @@ fun DifficultyChip(
 }
 
 @Composable
-fun LibraryWordItem(card: VocabularyCard) {
+fun LibraryWordItem(card: VocabularyCardUi) {
     ModernCard(
         modifier = Modifier.fillMaxWidth().semantics { contentDescription = "Word: ${card.word}, Translation: ${card.translation}" },
         backgroundColor = SurfaceLight,
@@ -229,7 +229,7 @@ fun LibraryWordItem(card: VocabularyCard) {
 }
 
 @Composable
-fun MasteryBadge(card: VocabularyCard) {
+fun MasteryBadge(card: VocabularyCardUi) {
     val (text, color) = when {
         card.timesReviewed >= 10 -> "Mastered" to Success
         card.timesReviewed >= 5 -> "Learning" to PrimaryBlue

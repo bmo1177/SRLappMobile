@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.srlappexperiment.presentation.viewmodel.settings.SettingsUiState
+import com.example.srlappexperiment.presentation.viewmodel.settings.SettingsEffect
 import com.example.srlappexperiment.presentation.viewmodel.settings.SettingsViewModel
 import com.example.srlappexperiment.presentation.viewmodel.auth.AuthViewModel
 import com.example.srlappexperiment.presentation.ui.components.*
@@ -43,7 +43,7 @@ fun SettingsScreen(
 ) {
     val prefs by viewModel.userPreferences.collectAsState()
     val notifs by viewModel.notificationSettings.collectAsState()
-    val uiState by viewModel.uiState.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
     val currentUser by authViewModel.currentUser.collectAsState()
     
     val context = LocalContext.current
@@ -66,30 +66,25 @@ fun SettingsScreen(
     var tempName by remember { mutableStateOf(prefs.displayName) }
     LaunchedEffect(prefs.displayName) { tempName = prefs.displayName }
 
-    // Handle UI State changes
-    LaunchedEffect(uiState) {
-        when (uiState) {
-            is SettingsUiState.Success -> {
-                snackbarHostState.showSnackbar((uiState as SettingsUiState.Success).message)
-                viewModel.resetUiState()
-            }
-            is SettingsUiState.Error -> {
-                snackbarHostState.showSnackbar((uiState as SettingsUiState.Error).message)
-                viewModel.resetUiState()
-            }
-            is SettingsUiState.LoggedOut -> {
-                onLogout()
-            }
-            is SettingsUiState.ExportSuccess -> {
-                val intent = Intent(Intent.ACTION_SEND).apply {
-                    type = "application/json"
-                    putExtra(Intent.EXTRA_STREAM, (uiState as SettingsUiState.ExportSuccess).uri)
-                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    // Handle one-shot effects
+    LaunchedEffect(Unit) {
+        viewModel.effects.collect { effect ->
+            when (effect) {
+                is SettingsEffect.ShowSnackbar -> {
+                    snackbarHostState.showSnackbar(effect.message)
                 }
-                context.startActivity(Intent.createChooser(intent, "Export Data"))
-                viewModel.resetUiState()
+                is SettingsEffect.NavigateToAuth -> {
+                    onLogout()
+                }
+                is SettingsEffect.ExportFile -> {
+                    val intent = Intent(Intent.ACTION_SEND).apply {
+                        type = "application/json"
+                        putExtra(Intent.EXTRA_STREAM, effect.uri)
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    context.startActivity(Intent.createChooser(intent, "Export Data"))
+                }
             }
-            else -> {}
         }
     }
 

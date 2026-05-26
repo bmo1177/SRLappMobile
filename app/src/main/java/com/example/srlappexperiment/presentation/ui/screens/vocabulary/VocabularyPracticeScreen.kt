@@ -71,7 +71,7 @@ fun VocabularyPracticeScreen(
     onSessionComplete: () -> Unit = {},
     onNavigateBack: () -> Unit = {}
 ) {
-    val cards by viewModel.sessionCards.collectAsState()
+    val cards by viewModel.sessionCardsUi.collectAsState()
     val sessionStats by viewModel.sessionStats.collectAsState()
     val sessionProgress by viewModel.sessionProgress.collectAsState()
     val isSessionComplete by viewModel.isSessionComplete.collectAsState()

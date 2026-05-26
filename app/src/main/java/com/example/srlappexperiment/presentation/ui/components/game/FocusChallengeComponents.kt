@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.srlappexperiment.data.local.database.entities.GameResult
+import com.example.srlappexperiment.presentation.model.GameResultUi
 import com.example.srlappexperiment.presentation.viewmodel.game.Question
 import com.example.srlappexperiment.ui.theme.TealPrimary
 import java.util.*
@@ -156,7 +156,7 @@ fun ScoreBoard(score: Int, accuracy: Float, combo: Int) {
 }
 
 @Composable
-fun LocalLeaderboard(results: List<GameResult>) {
+fun LocalLeaderboard(results: List<GameResultUi>) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp)

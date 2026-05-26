@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.srlappexperiment.data.local.database.entities.VocabularyCard
 import com.example.srlappexperiment.domain.repository.VocabularyRepository
+import com.example.srlappexperiment.presentation.model.VocabularyCardUi
+import com.example.srlappexperiment.presentation.model.toUi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -43,6 +45,9 @@ class VocabularyLibraryViewModel @Inject constructor(
             matchesQuery && matchesDifficulty
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    val filteredCardsUi: StateFlow<List<VocabularyCardUi>> = filteredCards.map { it.toUi() }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
