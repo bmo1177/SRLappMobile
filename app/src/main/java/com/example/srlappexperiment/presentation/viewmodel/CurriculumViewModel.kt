@@ -7,6 +7,7 @@ import com.example.srlappexperiment.data.local.database.entities.TeacherCompeten
 import com.example.srlappexperiment.data.local.database.entities.TeacherDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 data class CurriculumUiState(

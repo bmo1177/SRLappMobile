@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.srlappexperiment.presentation.ui.components.vocabulary.AiExplanationCard
 import com.example.srlappexperiment.presentation.ui.components.vocabulary.AiExplanationShimmer
+import com.example.srlappexperiment.presentation.model.VocabularyCardUi
 import com.example.srlappexperiment.presentation.viewmodel.VocabularyPracticeViewModel
 import com.example.srlappexperiment.ui.theme.*
 
@@ -295,7 +296,7 @@ private fun StreakCelebration(count: Int) {
  */
 @Composable
 private fun PracticeContent(
-    cards: List<com.example.srlappexperiment.data.local.database.entities.VocabularyCard>,
+    cards: List<VocabularyCardUi>,
     pagerState: PagerState,
     sessionProgress: com.example.srlappexperiment.domain.model.SessionProgress,
     isCardFlipped: Boolean,

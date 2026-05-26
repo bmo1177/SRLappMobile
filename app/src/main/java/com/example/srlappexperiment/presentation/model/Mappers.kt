@@ -22,4 +22,5 @@ fun EntityGameResult.toUi(): GameResultUi = GameResultUi(
     timestamp = timestamp
 )
 
+@JvmName("gameResultListToUi")
 fun List<EntityGameResult>.toUi(): List<GameResultUi> = map { it.toUi() }

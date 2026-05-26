@@ -168,7 +168,18 @@ class FirebaseAuthManager @Inject constructor(
         val listener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             val firebaseUser = firebaseAuth.currentUser
             if (firebaseUser != null) {
-                trySend(getUserFromFirestore(firebaseUser.uid))
+                val task = db.collection(Constants.COLLECTION_USERS)
+                    .document(firebaseUser.uid)
+                    .get()
+                task.addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        trySend(documentToUser(document))
+                    } else {
+                        trySend(null)
+                    }
+                }.addOnFailureListener {
+                    trySend(null)
+                }
             } else {
                 trySend(null)
             }
