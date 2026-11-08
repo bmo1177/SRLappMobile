@@ -16,7 +16,8 @@ data class TeacherDomain(
         parentColumns = ["domain_id"],
         childColumns = ["domain_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("domain_id")]
 )
 data class TeacherCompetence(
     @PrimaryKey val competence_id: Int,
@@ -31,7 +32,8 @@ data class TeacherCompetence(
         parentColumns = ["competence_id"],
         childColumns = ["competence_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("competence_id")]
 )
 data class TeacherAbility(
     @PrimaryKey val ability_id: Int,
@@ -46,7 +48,8 @@ data class TeacherAbility(
         parentColumns = ["competence_id"],
         childColumns = ["competence_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("competence_id")]
 )
 data class TeacherChallenge(
     @PrimaryKey val challenge_id: Int,
@@ -61,7 +64,8 @@ data class TeacherChallenge(
         parentColumns = ["challenge_id"],
         childColumns = ["challenge_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("challenge_id")]
 )
 data class TeacherAttempt(
     @PrimaryKey val attempt_id: Int,
@@ -78,7 +82,8 @@ data class TeacherAttempt(
         parentColumns = ["attempt_id"],
         childColumns = ["attempt_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("attempt_id")]
 )
 data class TeacherScore(
     @PrimaryKey val score_id: Int,
@@ -103,7 +108,8 @@ data class TeacherUserAccount(
         parentColumns = ["competence_id"],
         childColumns = ["competence_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("competence_id")]
 )
 data class TeacherResource(
     @PrimaryKey val resource_id: Int,
@@ -128,7 +134,8 @@ data class TeacherResource(
             childColumns = ["resource_id"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index("user_id"), Index("resource_id")]
 )
 data class TeacherUserResourceLog(
     @PrimaryKey val log_id: Int,
@@ -146,7 +153,8 @@ data class TeacherUserResourceLog(
         parentColumns = ["competence_id"],
         childColumns = ["competence_id"],
         onDelete = ForeignKey.CASCADE
-    )]
+    )],
+    indices = [Index("competence_id")]
 )
 data class TeacherActivity(
     @PrimaryKey val activity_id: Int,
@@ -171,7 +179,8 @@ data class TeacherActivity(
             childColumns = ["activity_id"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index("user_id"), Index("activity_id")]
 )
 data class TeacherStudentActivity(
     @PrimaryKey val student_activity_id: Int,
@@ -198,7 +207,8 @@ data class TeacherStudentActivity(
             childColumns = ["competence_id"],
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index("user_id"), Index("competence_id")]
 )
 data class TeacherCourseGrade(
     @PrimaryKey val grade_id: Int,

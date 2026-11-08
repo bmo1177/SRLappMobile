@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -47,7 +47,7 @@ fun FocusChallengeScreen(
                 title = { Text("Focus Challenge", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 }
             )
@@ -184,7 +184,7 @@ fun GameResultsScreen(
         
         Box(contentAlignment = Alignment.Center) {
             CircularProgressIndicator(
-                progress = accuracy / 100f,
+                progress = { accuracy / 100f },
                 modifier = Modifier.size(120.dp),
                 color = Color(0xFF4CAF50),
                 strokeWidth = 12.dp,

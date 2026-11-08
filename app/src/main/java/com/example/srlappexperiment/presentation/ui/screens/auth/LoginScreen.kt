@@ -16,6 +16,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.srlappexperiment.BuildConfig
 import com.example.srlappexperiment.domain.model.AuthState
 import com.example.srlappexperiment.presentation.viewmodel.auth.AuthViewModel
 import com.example.srlappexperiment.ui.theme.PrimaryPurple
@@ -122,33 +123,35 @@ fun LoginScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
-        
-        // Test account info
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F5F5))
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
+        if (BuildConfig.DEBUG) {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Test account info — debug builds only (never ship credentials in release)
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F5F5))
             ) {
-                Text(
-                    "Test Accounts:",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    "User: user@test.com / password123",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    "Admin: admin@test.com / admin123",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
+                Column(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text(
+                        "Test Accounts:",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        "User: user@test.com / password123",
+                        fontSize = 11.sp,
+                        color = Color.Gray
+                    )
+                    Text(
+                        "Admin: admin@test.com / admin123",
+                        fontSize = 11.sp,
+                        color = Color.Gray
+                    )
+                }
             }
         }
         

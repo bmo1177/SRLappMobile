@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -42,7 +44,7 @@ fun AiPartnerScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
@@ -118,7 +120,7 @@ fun AiPartnerScreen(
                         },
                         colors = IconButtonDefaults.iconButtonColors(containerColor = PrimaryPurple)
                     ) {
-                        Icon(Icons.Default.Send, contentDescription = "Send", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send", tint = Color.White)
                     }
                 }
             }
@@ -148,7 +150,7 @@ fun ChatBubble(message: ChatMessage) {
                 
                 if (message.isAi && message.text.contains("¡Excelente!")) {
                     Spacer(modifier = Modifier.height(8.dp))
-                    Divider(color = TextSecondary.copy(alpha = 0.2f))
+                    HorizontalDivider(color = TextSecondary.copy(alpha = 0.2f))
                     Row(
                         modifier = Modifier.padding(top = 8.dp),
                         verticalAlignment = Alignment.CenterVertically

@@ -10,6 +10,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Chat
+import androidx.compose.material.icons.automirrored.filled.HelpCenter
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
@@ -296,13 +298,13 @@ fun SettingsScreen(
             // Support & Feedback
             SettingsSection(title = "Support & Feedback") {
                 SettingItem(
-                    icon = Icons.Default.HelpCenter,
+                    icon = Icons.AutoMirrored.Filled.HelpCenter,
                     label = "Help Center",
                     value = "FAQs and support tickets",
                     onClick = onNavigateToSupport
                 )
                 SettingItem(
-                    icon = Icons.Default.Chat,
+                    icon = Icons.AutoMirrored.Filled.Chat,
                     label = "Send Feedback",
                     value = "Tell us what you think",
                     onClick = { /* Feedback dialog */ }

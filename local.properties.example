@@ -1,0 +1,15 @@
+## This file must NOT be committed to source control by users.
+## Do not store secret keys in your repositories.
+## Copy this file to local.properties and fill in your own values.
+##
+## Android SDK location (adjust to your machine):
+##   Linux:  sdk.dir=/home/<user>/Android/Sdk
+##   macOS:  sdk.dir=/Users/<user>/Library/Android/sdk
+##   Windows: sdk.dir=C\:\\Users\\<user>\\AppData\\Local\\Android\\Sdk
+sdk.dir=/home/<user>/Android/Sdk
+
+## Gemini AI key (https://aistudio.google.com) — leave empty to build; AI features will stay idle.
+GEMINI_API_KEY=
+
+## Firebase project id (must match app/google-services.json -> project_info.project_id)
+FIREBASE_PROJECT_ID=androidappsrl-56a5a

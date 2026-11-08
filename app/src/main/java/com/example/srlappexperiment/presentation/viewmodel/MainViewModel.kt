@@ -7,6 +7,7 @@ import com.example.srlappexperiment.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
@@ -45,6 +46,13 @@ class MainViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = false
         )
+
+    /** Session-aware awaits for Splash: suspend until Firebase/DataStore emit (no initial-value race). */
+    suspend fun awaitLoginState(): Boolean =
+        authRepository.getCurrentUser().first() != null
+
+    suspend fun awaitOnboarded(): Boolean =
+        preferencesRepository.userPreferences.first().isOnboarded
 }
 
 data class ThemeState(

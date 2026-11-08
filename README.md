@@ -2,9 +2,10 @@
 
 <div align="center">
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.20-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
-[![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-1.5.4-4285F4?style=for-the-badge&logo=jetpack-compose&logoColor=white)](https://developer.android.com/jetpack/compose)
-[![Firebase](https://img.shields.io/badge/Firebase-Integrated-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![Jetpack Compose](https://img.shields.io/badge/Compose_BOM-2024.09.00-4285F4?style=for-the-badge&logo=jetpack-compose&logoColor=white)](https://developer.android.com/jetpack/compose)
+[![Firebase](https://img.shields.io/badge/Firebase_BOM-33.7.0-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![AGP](https://img.shields.io/badge/AGP-8.13.2-3DDC84?style=for-the-badge)](https://developer.android.com/build)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
 **Transform 60 hours of classroom learning into 15 minutes of daily, AI-powered practice**
@@ -212,16 +213,18 @@ A production-ready Android application revolutionizing language learning through
 
 | Category | Technology | Purpose |
 |----------|-----------|---------|
-| **Language** | Kotlin 1.9.20 | Type-safe codebase |
-| **UI** | Jetpack Compose 1.5.4 | Declarative UI |
+| **Language** | Kotlin 2.0.21 | Type-safe codebase |
+| **Build** | Gradle 8.13, AGP 8.13.2, JDK 17 | Builds |
+| **UI** | Jetpack Compose BOM 2024.09.00 (Material3) | Declarative UI |
 | **Architecture** | MVVM + Clean | Separation of concerns |
-| **DI** | Hilt 2.48 | Dependency injection |
-| **Local DB** | Room 2.6.0 | SQLite with coroutines |
-| **Cloud DB** | Firestore | Real-time sync |
-| **Auth** | Firebase Auth | Multi-provider login |
-| **AI** | Gemini 1.5 Flash | Content generation |
-| **Notifications** | FCM + WorkManager | Smart nudges |
-| **Testing** | JUnit5 + Espresso | Unit + UI tests |
+| **DI** | Hilt 2.51.1 (Hilt-Navigation-Compose 1.2.0) | Dependency injection |
+| **Local DB** | Room 2.6.1 + DataStore 1.1.1 | SQLite + prefs with coroutines |
+| **Cloud** | Firebase BOM 33.7.0 (Auth, Firestore, FCM, Analytics, Perf, Crashlytics) | Real-time sync |
+| **AI** | Google AI SDK 0.9.0 (Gemini) | Mnemonics, distractors, chat |
+| **Background** | WorkManager 2.10.0 | Sync + notifications |
+| **Navigation** | Navigation-Compose 2.8.5 | Type-safe routes |
+| **Testing** | JUnit 4.13.2 + Mockito 5.11.0 + Espresso 3.7.0 | Unit + UI tests |
+| **SDK** | minSdk 24, compile/target 36 | Android 7.0+ / Android 16 |
 
 ---
 
@@ -268,37 +271,102 @@ class NotificationEngine {
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Android Studio Hedgehog (2023.1.1+)
+- Android Studio Hedgehog (2023.1.1+) or Android SDK command-line tools
 - JDK 17+
-- Android SDK 24+ (min), 34 (target)
-- Firebase project
-- Gemini API key
+- Android SDK 24 (min), 36 (target) — verified build uses `platforms;android-36` + `build-tools;36.0.0`
+- Firebase project — `app/google-services.json` is already tracked in this repo (no download needed for a repeatable build)
+- Gemini API key (optional — leave empty to build; AI features stay idle)
 
 ### Installation
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/linguasphere.git
-cd linguasphere
+git clone https://github.com/bmo1177/SRLappMobile.git
+cd SRLappMobile
 
-# 2. Add Firebase config
-# Download google-services.json from Firebase Console
-# Place in: app/google-services.json
+# 2. Firebase config — already present
+# app/google-services.json is tracked and matches package
+# com.example.srlappexperiment. No action needed unless you rotate projects.
 
-# 3. Set environment variables in local.properties
-GEMINI_API_KEY=your_gemini_api_key
-FIREBASE_PROJECT_ID=your_project_id
+# 3. Set environment variables (never commit local.properties)
+cp local.properties.example local.properties
+# edit local.properties: set sdk.dir to your SDK, optionally GEMINI_API_KEY
+# example: sdk.dir=/home/<user>/Android/Sdk
 
-# 4. Build and run
+# 4. Install SDK packages (first time, no Android Studio)
+# sdkmanager --sdk_root=/home/<user>/Android/Sdk "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+
+# 5. Build and run
 ./gradlew assembleDebug
+# APK: app/build/outputs/apk/debug/app-debug.apk
 ```
+> Note: if `./gradlew` cannot download Gradle 8.13 on your network
+> (github releases 502/503), the verified fallback used for this
+> rescue was `nix shell nixpkgs#gradle --command gradle assembleDebug`
+> (Gradle 8.14.6, JDK 17, same `assembleDebug` task).
 
 ### Run Tests
 ```bash
-./gradlew testDebugUnitTest          # Unit tests
-./gradlew connectedDebugAndroidTest  # UI tests
+./gradlew testDebugUnitTest          # Unit tests (JUnit4 + Mockito)
+./gradlew connectedDebugAndroidTest  # UI tests (needs a device/emulator)
 ./gradlew jacocoTestReport           # Coverage report
 ```
+
+### Build verification (rescue 2026-11-08)
+
+Verified on NixOS (JDK 17, `platforms;android-36`, `build-tools;36.0.0`):
+
+```bash
+gradle assembleDebug   # BUILD SUCCESSFUL, 45 tasks
+# APK: app/build/outputs/apk/debug/app-debug.apk (30M)
+# aapt: com.example.srlappexperiment, versionCode 2, versionName 1.1.0
+```
+
+`./gradlew` on a normal network builds the same APK. See `RESCUE_NOTES.md`
+for host setup and the stale-log note (`build_log.txt` predates HEAD).
+
+### Emulator runbook (fix "won't start / very slow")
+
+Use a **Google Play** image — Firebase Auth/Firestore/FCM hang without Play Services:
+
+```bash
+sdkmanager "emulator" "system-images;android-36;google_apis_playstore;x86_64"
+avdmanager create avd -n srl-avd \
+  -k "system-images;android-36;google_apis_playstore;x86_64" -d "pixel_6"
+emulator -avd srl-avd                   # HW accel (KVM) + host GPU, >= 4GB RAM
+adb wait-for-device
+./gradlew installDebug
+adb shell am force-stop com.example.srlappexperiment
+adb shell am start -W -n com.example.srlappexperiment/.MainActivity
+# ThisWait/ThisTime should reach the walkthrough in a few seconds.
+adb logcat --pid=$(adb shell pidof -s com.example.srlappexperiment) *:W | head -50
+```
+
+Startup fixes (2026-11-08): Splash now waits for the real session
+(`awaitLoginState()`/`awaitOnboarded()` with 3s timeout) instead of a fixed
+2.5s delay that read initial `false` values on slow emulators; WorkManager
+scheduling moved off `Application.onCreate` main thread to `IO`; Firebase
+Analytics/Perf collection disabled in `DEBUG` builds.
+
+### Security
+
+- `local.properties` (SDK path + `GEMINI_API_KEY`) is gitignored — never commit it.
+- `app/google-services.json` is tracked for repeatable builds. In Firebase Console,
+  restrict its API key by package (`com.example.srlappexperiment`) + SHA-1 and rotate
+  if it leaks further. See `FIREBASE_SETUP.md`.
+- `android:usesCleartextTraffic="false"`, backup rules in `res/xml/backup_rules.xml`,
+  and no hardcoded AI keys in Kotlin — the key comes from `BuildConfig.GEMINI_API_KEY`.
+- Test accounts (`TEST_ACCOUNTS.md`) are docs only — create local users; never ship test
+  passwords in a release build.
+
+### Troubleshooting
+
+- `google-services.json is missing` → the file is already in `app/`; see above.
+- `SDK location not found` → run `cp local.properties.example local.properties` and set `sdk.dir`.
+- Gradle wrapper 502/503 from github releases → raise `networkTimeout` (already 300000)
+  or use `gradle assembleDebug` (system Gradle, same task).
+- First-time SDK setup → install `platform-tools`, `platforms;android-36`, `build-tools;36.0.0`
+  via `sdkmanager` before running Gradle.
 
 ---
 
@@ -392,10 +460,10 @@ This project is licensed under the MIT License.
 
 ⭐ ⭐ ⭐ ⭐ ⭐ 
 
-[Report Bug](https://github.com/yourusername/linguasphere/issues) • [Request Feature](https://github.com/yourusername/linguasphere/issues) • [Documentation](https://docs.linguasphere.app)
+[Report Bug](https://github.com/bmo1177/SRLappMobile/issues) • [Request Feature](https://github.com/bmo1177/SRLappMobile/issues) • [Firebase Setup](FIREBASE_SETUP.md)
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/linguasphere?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/linguasphere?style=social)
-![GitHub last commit](https://img.shields.io/github/last-commit/yourusername/linguasphere)
+![GitHub stars](https://img.shields.io/github/stars/bmo1177/SRLappMobile?style=social)
+![GitHub forks](https://img.shields.io/github/forks/bmo1177/SRLappMobile?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/bmo1177/SRLappMobile)
 
 </div>

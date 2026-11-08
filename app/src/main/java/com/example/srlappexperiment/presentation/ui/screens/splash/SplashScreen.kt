@@ -14,6 +14,7 @@ import com.example.srlappexperiment.R
 import com.example.srlappexperiment.ui.components.GradientStyle
 import com.example.srlappexperiment.ui.components.premiumBackground
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeoutOrNull
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.srlappexperiment.presentation.viewmodel.MainViewModel
 
@@ -23,9 +24,7 @@ fun SplashScreen(
     onNavigate: (String) -> Unit
 ) {
     var startAnimation by remember { mutableStateOf(false) }
-    val isLoggedIn by viewModel.isUserLoggedIn.collectAsState()
-    val isOnboarded by viewModel.isOnboardingComplete.collectAsState()
-    
+
     val alpha by animateFloatAsState(
         targetValue = if (startAnimation) 1f else 0f,
         animationSpec = tween(durationMillis = 1000),
@@ -40,11 +39,19 @@ fun SplashScreen(
 
     LaunchedEffect(Unit) {
         startAnimation = true
-        delay(2500)
-        
+        // Wait for the real session (max 3s) instead of trusting initial StateFlow values.
+        // On a slow emulator the old fixed 2.5s read initial `false` and mis-routed to walkthrough.
+        val session = withTimeoutOrNull(3000) {
+            val loggedIn = viewModel.awaitLoginState()
+            val onboarded = viewModel.awaitOnboarded()
+            loggedIn to onboarded
+        }
+        // Keep a minimum brand time without blocking the session wait above.
+        delay(1200)
+
         val route = when {
-            isLoggedIn && isOnboarded -> "dashboard"
-            isLoggedIn && !isOnboarded -> "onboarding"
+            session?.first == true && session.second -> "dashboard"
+            session?.first == true -> "onboarding"
             else -> "walkthrough"
         }
         onNavigate(route)

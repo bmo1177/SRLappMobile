@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -56,7 +57,7 @@ fun AnalyticsScreen(
                         Column(modifier = Modifier.padding(20.dp)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Box(modifier = Modifier.size(32.dp).clip(CircleShape).background(PrimaryPurple.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
-                                    Icon(Icons.Default.MenuBook, contentDescription = null, tint = PrimaryPurple, modifier = Modifier.size(16.dp))
+                                    Icon(Icons.AutoMirrored.Filled.MenuBook, contentDescription = null, tint = PrimaryPurple, modifier = Modifier.size(16.dp))
                                 }
                                 Spacer(modifier = Modifier.width(12.dp))
                                 Text("Total Words", style = MaterialTheme.typography.labelMedium, color = TextSecondary)

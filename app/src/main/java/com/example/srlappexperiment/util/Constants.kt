@@ -3,7 +3,7 @@ package com.example.srlappexperiment.util
 object Constants {
     // Database
     const val DATABASE_NAME = "srl_app_database"
-    const val DATABASE_VERSION = 3
+    const val DATABASE_VERSION = 4
 
     // DataStore
     const val DATASTORE_NAME = "srl_app_preferences"

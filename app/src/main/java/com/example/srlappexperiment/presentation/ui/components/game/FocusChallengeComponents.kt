@@ -9,9 +9,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -79,7 +79,7 @@ fun QuestionCard(
             
             if (!question.pronunciation.isNullOrBlank()) {
                 IconButton(onClick = { /* TTS */ }) {
-                    Icon(Icons.Default.VolumeUp, null, tint = TealPrimary)
+                    Icon(Icons.AutoMirrored.Filled.VolumeUp, null, tint = TealPrimary)
                 }
             }
 
